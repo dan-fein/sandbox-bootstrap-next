@@ -12,7 +12,7 @@ export default async function HomePage() {
       <section className="card">
         <h1>Vercel Sandbox Router</h1>
         <p>
-          Traffic hitting this Nex   t.js application is routed through a logical control-plane that
+          Traffic hitting this Next.js application is routed through a logical control-plane that
           resolves the currently healthy Vercel Sandbox and forwards requests via Middleware rewrites.
         </p>
         <p>
