@@ -1,0 +1,14 @@
+.next
+out
+dist
+node_modules
+.vercel
+.DS_Store
+
+# Local env files
+.env.local
+.env.*.local
+
+# Keep the pnpm lockfile tracked
+!pnpm-lock.yaml
+
