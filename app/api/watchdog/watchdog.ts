@@ -2,6 +2,7 @@ import { get } from '@vercel/edge-config';
 import { Sandbox } from '@vercel/sandbox';
 import { PassThrough } from 'node:stream';
 import pRetry from 'p-retry';
+import { monitoringRoutesDisabled, monitoringRoutesFlagValue } from '../_lib/monitoringToggle';
 
 const HEALTH_ENDPOINT = '/api/health';
 const KEEPALIVE_ENDPOINT = '/internal/keepalive';
@@ -71,6 +72,11 @@ const DEFAULT_STATE: SandboxState = {
 };
 
 export default async function handler() {
+  if (monitoringRoutesDisabled()) {
+    log('watchdog.disabled', {});
+    return new Response('watchdog routes disabled', { status: 200 });
+  }
+
   const startedAt = Date.now();
   const state = await loadState();
 
@@ -219,6 +225,10 @@ async function provisionSandbox(reason: string): Promise<SandboxRecord> {
       SANDBOX_APP_REF,
       SANDBOX_SELF_URL: url,
     };
+    const monitoringFlag = monitoringRoutesFlagValue();
+    if (monitoringFlag) {
+      env.NEXT_APP_SKIP_MONITORING_ROUTES = monitoringFlag;
+    }
 
     try {
       log('sandbox.bootstrap.env', {
