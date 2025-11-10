@@ -71,19 +71,28 @@ const DEFAULT_STATE: SandboxState = {
   draining: [],
 };
 
-export default async function handler() {
+type WatchdogOptions = {
+  forceProvision?: boolean;
+};
+
+type EnsureSandboxHealthOptions = {
+  forceProvision?: boolean;
+};
+
+export default async function handler(options: WatchdogOptions = {}) {
   if (monitoringRoutesDisabled()) {
     log('watchdog.disabled', {});
     return new Response('watchdog routes disabled', { status: 200 });
   }
 
+  const { forceProvision = false } = options;
   const startedAt = Date.now();
   const state = await loadState();
 
-  log('watchdog.tick', { state });
+  log('watchdog.tick', { state, forceProvision });
 
   try {
-    const nextState = await ensureSandboxHealth(state);
+    const nextState = await ensureSandboxHealth(state, { forceProvision });
     nextState.lastCheckAt = new Date().toISOString();
     nextState.lastFailure = null;
     await persistState(nextState);
@@ -104,7 +113,8 @@ export default async function handler() {
   return new Response('ok');
 }
 
-async function ensureSandboxHealth(state: SandboxState): Promise<SandboxState> {
+async function ensureSandboxHealth(state: SandboxState, options: EnsureSandboxHealthOptions = {}): Promise<SandboxState> {
+  const { forceProvision = false } = options;
   let nextState = cloneState(state ?? DEFAULT_STATE);
 
   if (!nextState.draining) {
@@ -117,14 +127,24 @@ async function ensureSandboxHealth(state: SandboxState): Promise<SandboxState> {
     ? false
     : now - new Date(nextState.lastRotationAt).getTime() >= ROTATION_INTERVAL_MS;
 
-  const health: SandboxHealth = active ? await checkSandboxHealth(active, 'active') : { healthy: false, reason: 'no-active-sandbox' };
+  const health: SandboxHealth = forceProvision
+    ? { healthy: false, reason: 'force-provision-request' }
+    : active
+      ? await checkSandboxHealth(active, 'active')
+      : { healthy: false, reason: 'no-active-sandbox' };
 
   if (health.healthy && active) {
     await pingKeepalive(active.url);
   }
 
-  if (!health.healthy || rotationDue) {
-    const reason = !health.healthy ? health.reason ?? 'health-check-failed' : 'rotation-due';
+  const shouldProvision = forceProvision || !health.healthy || rotationDue;
+
+  if (shouldProvision) {
+    const reason = forceProvision
+      ? 'force-provision-request'
+      : !health.healthy
+        ? health.reason ?? 'health-check-failed'
+        : 'rotation-due';
     log('sandbox.provision.start', { reason, previous: active?.id });
 
     const newSandbox = await provisionSandbox(reason);
