@@ -251,7 +251,7 @@ async function provisionSandbox(reason: string): Promise<SandboxRecord> {
 
       await runSandboxCommand(sandbox, 'pnpm-install', {
         cmd: 'pnpm',
-        args: ['install', '--frozen-lockfile'],
+        args: ['install', '--no-frozen-lockfile'],
         cwd: SANDBOX_WORKDIR,
       });
 
