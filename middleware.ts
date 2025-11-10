@@ -66,8 +66,13 @@ export async function middleware(request: NextRequest) {
     if (activeUrl) {
       const rewriteUrl = composeSandboxUrl(activeUrl, request);
       const debug = await probeSandbox(rewriteUrl, request);
-      const response = NextResponse.rewrite(rewriteUrl);
-      response.headers.set('x-sandbox-origin', new URL(activeUrl).origin);
+      const sandboxOrigin = new URL(activeUrl).origin;
+      const requestHeaders = new Headers(request.headers);
+      requestHeaders.set('x-sandbox-origin', sandboxOrigin);
+      const response = NextResponse.rewrite(rewriteUrl, {
+        request: { headers: requestHeaders },
+      });
+      response.headers.set('x-sandbox-origin', sandboxOrigin);
       response.headers.set('x-sandbox-routing', 'edge-rewrite');
       if (debug) {
         response.headers.set('x-sandbox-probe-status', String(debug.status));
@@ -83,8 +88,13 @@ export async function middleware(request: NextRequest) {
     if (fallbackUrl) {
       const rewriteUrl = composeSandboxUrl(fallbackUrl, request);
       const debug = await probeSandbox(rewriteUrl, request);
-      const response = NextResponse.rewrite(rewriteUrl);
-      response.headers.set('x-sandbox-origin', new URL(fallbackUrl).origin);
+      const sandboxOrigin = new URL(fallbackUrl).origin;
+      const requestHeaders = new Headers(request.headers);
+      requestHeaders.set('x-sandbox-origin', sandboxOrigin);
+      const response = NextResponse.rewrite(rewriteUrl, {
+        request: { headers: requestHeaders },
+      });
+      response.headers.set('x-sandbox-origin', sandboxOrigin);
       response.headers.set('x-sandbox-routing', 'edge-rewrite-stale');
       if (debug) {
         response.headers.set('x-sandbox-probe-status', String(debug.status));
