@@ -23,7 +23,7 @@ export default async function HomePage() {
         <h2>Operational Endpoints</h2>
         <ul>
           <li>
-            <Link href="/health">Health Check</Link>
+            <Link href="/api/health">Health Check</Link>
           </li>
           <li>
             <Link href="/internal/keepalive" prefetch={false}>

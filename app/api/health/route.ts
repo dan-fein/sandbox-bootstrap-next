@@ -14,7 +14,7 @@ export async function GET(request: Request) {
     sandboxOrigin,
     env: sandboxOrigin ? 'sandbox' : 'edge-router',
     uptimeSeconds: Math.round(process.uptime()),
-    coldStartMs: now - startedAt,
+    // coldStartMs: now - startedAt,
     timestamp: new Date(now).toISOString(),
   });
 }
