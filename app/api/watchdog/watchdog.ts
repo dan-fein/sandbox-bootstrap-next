@@ -579,6 +579,10 @@ function log(event: string, payload: LogPayload = undefined, level: 'info' | 'wa
 function env(name: string): string {
   const value = process.env[name];
   if (!value) {
+    if (monitoringRoutesDisabled()) {
+      log('watchdog.env.skip', { name });
+      return '';
+    }
     throw new Error(`Missing required environment variable ${name}`);
   }
   return value;
