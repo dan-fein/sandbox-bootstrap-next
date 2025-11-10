@@ -17,6 +17,12 @@ export default async function HomePage() {
           you always land in the right environment without thinking about it.
         </p>
         <p>
+         There is nothing efficient about this setup.
+        </p>
+        <p>
+          Some might argue that this is a waste of resources. It might be.
+        </p>
+        <p>
           Active sandbox origin: <code>{sandboxOrigin}</code>
         </p>
       </section>
