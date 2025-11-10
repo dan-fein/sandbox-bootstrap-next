@@ -6,6 +6,7 @@ const SANDBOX_HEADER = 'x-sandbox-origin';
 export default async function HomePage() {
   const requestHeaders = await headers();
   const sandboxOrigin = requestHeaders.get(SANDBOX_HEADER) ?? 'unknown';
+  console.log('sandboxOrigin', sandboxOrigin);
 
   return (
     <main>
