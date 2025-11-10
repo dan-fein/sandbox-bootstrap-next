@@ -2,7 +2,7 @@ import { get } from '@vercel/edge-config';
 import { Sandbox } from '@vercel/sandbox';
 import { PassThrough } from 'node:stream';
 import pRetry from 'p-retry';
-import { monitoringRoutesDisabled, monitoringRoutesFlagValue } from '../_lib/monitoringToggle';
+import { monitoringRoutesDisabled } from '../_lib/monitoringToggle';
 
 const HEALTH_ENDPOINT = '/api/health';
 const KEEPALIVE_ENDPOINT = '/internal/keepalive';
@@ -218,17 +218,17 @@ async function provisionSandbox(reason: string): Promise<SandboxRecord> {
     });
 
     const url = sandbox.domain(SANDBOX_START_PORT_NUMBER);
-    const env: Record<string, string> = {
+    const runtimeEnv: Record<string, string> = {
       PORT: SANDBOX_START_PORT,
       KEEPALIVE_TOKEN: SANDBOX_KEEPALIVE_TOKEN,
       SANDBOX_APP_REPO,
       SANDBOX_APP_REF,
       SANDBOX_SELF_URL: url,
     };
-    const monitoringFlag = monitoringRoutesFlagValue();
-    if (monitoringFlag) {
-      env.NEXT_APP_SKIP_MONITORING_ROUTES = monitoringFlag;
-    }
+    const buildEnv: Record<string, string> = {
+      NEXT_APP_SKIP_MONITORING_ROUTES: 'true',
+    };
+    runtimeEnv.NEXT_APP_SKIP_MONITORING_ROUTES = 'true';
 
     try {
       log('sandbox.bootstrap.env', {
@@ -269,16 +269,17 @@ async function provisionSandbox(reason: string): Promise<SandboxRecord> {
         cmd: 'pnpm',
         args: ['--filter', 'next-app', 'build'],
         cwd: SANDBOX_WORKDIR,
+        env: buildEnv,
       });
 
-      env.NODE_ENV = env.NODE_ENV ?? 'production';
-      env.PORT = SANDBOX_START_PORT;
+      runtimeEnv.NODE_ENV = runtimeEnv.NODE_ENV ?? 'production';
+      runtimeEnv.PORT = SANDBOX_START_PORT;
 
       await runSandboxCommand(sandbox, 'pnpm-start', {
         cmd: 'pnpm',
         args: ['--filter', 'next-app', 'start'],
         cwd: SANDBOX_WORKDIR,
-        env,
+        env: runtimeEnv,
         detached: true,
       });
     } catch (error) {
