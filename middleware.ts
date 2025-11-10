@@ -12,7 +12,7 @@ const LEGACY_EDGE_CONFIG_KEYS = {
 } as const;
 
 const SANDBOX_BYPASS_HEADER = 'x-sandbox-bypass';
-const ROUTE_BYPASS_PREFIXES = ['/api', '/favicon.ico', '/robots.txt', '/sitemap', '/bootstrap.js', '/bootstrap.js.map'];
+const ROUTE_BYPASS_PREFIXES = ['/api', '/watchdog', '/favicon.ico', '/robots.txt', '/sitemap', '/bootstrap.js', '/bootstrap.js.map'];
 const DEBUG_SANDBOX_ROUTING = process.env.DEBUG_SANDBOX_ROUTING === 'true';
 
 function shouldBypassMiddleware(request: NextRequest): boolean {
