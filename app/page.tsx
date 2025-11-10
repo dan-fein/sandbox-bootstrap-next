@@ -13,29 +13,29 @@ export default async function HomePage() {
       <section className="card">
         <h1>Vercel Sandbox Router</h1>
         <p>
-          Traffic hitting this Next.js application is routed through a logical control-plane that
-          resolves the currently healthy Vercel Sandbox and forwards requests via Middleware rewrites.
+          This app automatically forwards every request to the sandbox that is currently healthy, so
+          you always land in the right environment without thinking about it.
         </p>
         <p>
           Active sandbox origin: <code>{sandboxOrigin}</code>
         </p>
       </section>
       <section className="card">
-        <h2>Operational Endpoints</h2>
+        <h2>Quick Checks</h2>
         <ul>
           <li>
-            <Link href="/api/health">Health Check</Link>
+            <Link href="/api/health">Health status</Link>
           </li>
           <li>
             <Link href="/internal/keepalive" prefetch={false}>
-              Private Keepalive
+              Keepalive ping (auth required)
             </Link>
           </li>
         </ul>
       </section>
       <footer>
-        Requests are rewritten at the edge, instrumented, and fanned into the active sandbox while cold
-        pools are drained gracefully every five hours.
+        The router rewrites requests at the edge, keeps an eye on each sandbox, and rotates to a fresh
+        instance roughly every five hours.
       </footer>
     </main>
   );
