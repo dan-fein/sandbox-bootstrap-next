@@ -35,7 +35,7 @@ const LEGACY_EDGE_CONFIG_KEYS = {
 
 export const config = {
   runtime: 'nodejs20.x',
-  schedule: '* * * * *',
+  schedule: '*/5 * * * *',
 };
 
 type SandboxRecord = {
