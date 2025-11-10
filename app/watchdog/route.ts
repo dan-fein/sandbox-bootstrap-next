@@ -1,4 +1,4 @@
-import watchdogHandler from '../../../../services/orchestrator/api/watchdog';
+import watchdogHandler from './watchdog';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
