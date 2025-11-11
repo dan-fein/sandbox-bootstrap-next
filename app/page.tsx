@@ -14,7 +14,7 @@ export default async function HomePage() {
         <h1>Vercel Sandbox Router</h1>
         <p>
           This app automatically forwards every request to the sandbox that is currently healthy, so
-          you always land in the right environment without thinking about it.
+          you always land in the right environment.
         </p>
         <p>
          There is nothing efficient about this setup.

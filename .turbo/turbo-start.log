@@ -1,0 +1,19 @@
+
+> next-app@0.1.0 start /Users/danfein/Code/sandbox-router/apps/next-app
+> next start
+
+   [1m[38;2;173;127;168m▲ Next.js 16.0.1[39m[22m
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.1.32:3000
+
+ [32m[1m✓[22m[39m Starting...
+ [33m[1m⚠[22m[39m Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /Users/danfein/package-lock.json as the root directory.
+ To silence this warning, set `outputFileTracingRoot` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/output#caveats for more information.
+ Detected additional lockfiles: 
+   * /Users/danfein/Code/sandbox-router/pnpm-lock.yaml
+
+Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+    at [3mignore-listed frames[23m
+[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 1.[39m

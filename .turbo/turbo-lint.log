@@ -1,0 +1,6 @@
+
+> next-app@0.1.0 lint /Users/danfein/Code/sandbox-router/apps/next-app
+> next lint
+
+Invalid project directory provided, no such directory: /Users/danfein/Code/sandbox-router/apps/next-app/lint
+ ELIFECYCLE  Command failed with exit code 1.

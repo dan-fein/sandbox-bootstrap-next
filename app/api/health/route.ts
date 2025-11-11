@@ -17,7 +17,7 @@ export async function GET(request: Request) {
     status: 'ok',
     service: 'next-app',
     sandboxOrigin,
-    env: sandboxOrigin ? 'sandbox' : 'edge-router',
+    env: sandboxOrigin ? 'sandbox' : 'router',
     uptimeSeconds: Math.round(process.uptime()),
     // coldStartMs: now - startedAt,
     timestamp: new Date(now).toISOString(),

@@ -1,0 +1,103 @@
+
+> next-app@0.1.0 dev /Users/danfein/Code/sandbox-router/apps/next-app
+> next dev
+
+ [33m[1m⚠[22m[39m Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /Users/danfein/package-lock.json as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * /Users/danfein/Code/sandbox-router/pnpm-lock.yaml
+
+   [1m[38;2;173;127;168m▲ Next.js 16.0.1[39m[22m (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.1.32:3000
+   - Environments: .env.local
+   - Experiments (use with caution):
+     [1m✓[22m externalDir
+     · serverActions
+
+ [32m[1m✓[22m[39m Starting...
+ [33m[1m⚠[22m[39m The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+ [32m[1m✓[22m[39m Ready in 833ms
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/","rewriteUrl":"https://sb-1s604rd856hi.vercel.run/","probeStatus":200}
+ GET /api/health [32m200[39m in 303ms[2m (compile: 274ms, proxy.ts: 16ms, render: 13ms)[22m
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/","rewriteUrl":"https://sb-1s604rd856hi.vercel.run/","probeStatus":200}
+ GET /api/health [32m200[39m in 26ms[2m (compile: 8ms, proxy.ts: 3ms, render: 15ms)[22m
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/","rewriteUrl":"https://sb-1s604rd856hi.vercel.run/","probeStatus":200}
+ GET /api/health [32m200[39m in 15ms[2m (compile: 7ms, proxy.ts: 4ms, render: 4ms)[22m
+[2025-11-11T01:34:25.500Z] INFO watchdog.tick state={"draining":[{"id":"sbx_2dQwCfMxsMcnHJwFswuRbbH0qgsy","url":"https://sb-1ki4uopwn6c2.vercel.run","createdAt":"2025-11-10T14:14:58.801Z","status":"healthy","drainStartedAt":"2025-11-10T21:35:18.524Z"}],"active":{"id":"sbx_KQ1iQkWRcC3AThER3BN1BAJdQzDO","url":"https://sb-1s604rd856hi.vercel.run","createdAt":"2025-11-10T21:35:18.133Z","status":"healthy"},"lastRotationAt":"2025-11-10T21:35:18.524Z","lastCheckAt":"2025-11-10T21:35:19.266Z","lastFailure":null} forceProvision=true
+[2025-11-11T01:34:25.502Z] INFO sandbox.provision.start reason=force-provision-request previous=sbx_KQ1iQkWRcC3AThER3BN1BAJdQzDO
+[2025-11-11T01:34:25.503Z] INFO sandbox.provision.create.start reason=force-provision-request
+[2025-11-11T01:34:26.294Z] INFO sandbox.bootstrap.env sandboxId=sbx_eXRFkbcu1bCGoQ5OyJefbBSyWIJA repoUrl=https://github.com/vercel/next.js/tree/canary/examples/blog gitRef=main workdir=/tmp/next-sandbox-app
+[2025-11-11T01:34:26.294Z] INFO sandbox.command.start sandboxId=sbx_eXRFkbcu1bCGoQ5OyJefbBSyWIJA step=prepare-workdir cmd=rm args=["-rf","/tmp/next-sandbox-app"] cwd=undefined detached=false
+[2025-11-11T01:34:28.480Z] INFO sandbox.command.complete sandboxId=sbx_eXRFkbcu1bCGoQ5OyJefbBSyWIJA step=prepare-workdir exitCode=0 signal=null
+[2025-11-11T01:34:28.480Z] INFO sandbox.command.start sandboxId=sbx_eXRFkbcu1bCGoQ5OyJefbBSyWIJA step=create-workdir cmd=mkdir args=["-p","/tmp/next-sandbox-app"] cwd=undefined detached=false
+[2025-11-11T01:34:28.943Z] INFO sandbox.command.complete sandboxId=sbx_eXRFkbcu1bCGoQ5OyJefbBSyWIJA step=create-workdir exitCode=0 signal=null
+[2025-11-11T01:34:28.945Z] INFO sandbox.command.start sandboxId=sbx_eXRFkbcu1bCGoQ5OyJefbBSyWIJA step=git-clone cmd=git args=["clone","--branch","main","--single-branch","--depth","1","https://github.com/vercel/next.js/tree/canary/examples/blog","/tmp/next-sandbox-app"] cwd=undefined detached=false
+[2025-11-11T01:34:29.427Z] WARN sandbox.command.stderr sandboxId=sbx_eXRFkbcu1bCGoQ5OyJefbBSyWIJA step=git-clone message="Cloning into '/tmp/next-sandbox-app'..."
+[2025-11-11T01:34:30.097Z] INFO sandbox.command.complete sandboxId=sbx_eXRFkbcu1bCGoQ5OyJefbBSyWIJA step=git-clone exitCode=128 signal=null
+[2025-11-11T01:34:30.098Z] ERROR sandbox.bootstrap.error sandboxId=sbx_eXRFkbcu1bCGoQ5OyJefbBSyWIJA error="Sandbox command \"git-clone\" failed with exit code 128"
+[2025-11-11T01:34:30.100Z] WARN sandbox.command.stderr sandboxId=sbx_eXRFkbcu1bCGoQ5OyJefbBSyWIJA step=git-clone message="fatal: repository 'https://github.com/vercel/next.js/tree/canary/examples/blog/' not found"
+[2025-11-11T01:34:30.344Z] WARN sandbox.provision.retry attemptNumber=1 retriesLeft=4 reason=force-provision-request
+[2025-11-11T01:34:32.356Z] INFO sandbox.provision.create.start reason=force-provision-request
+[2025-11-11T01:34:33.066Z] INFO sandbox.bootstrap.env sandboxId=sbx_mNN790UI6vTaB4i3wd3w3k9wmFDF repoUrl=https://github.com/vercel/next.js/tree/canary/examples/blog gitRef=main workdir=/tmp/next-sandbox-app
+[2025-11-11T01:34:33.066Z] INFO sandbox.command.start sandboxId=sbx_mNN790UI6vTaB4i3wd3w3k9wmFDF step=prepare-workdir cmd=rm args=["-rf","/tmp/next-sandbox-app"] cwd=undefined detached=false
+[2025-11-11T01:34:35.057Z] INFO sandbox.command.complete sandboxId=sbx_mNN790UI6vTaB4i3wd3w3k9wmFDF step=prepare-workdir exitCode=0 signal=null
+[2025-11-11T01:34:35.057Z] INFO sandbox.command.start sandboxId=sbx_mNN790UI6vTaB4i3wd3w3k9wmFDF step=create-workdir cmd=mkdir args=["-p","/tmp/next-sandbox-app"] cwd=undefined detached=false
+[2025-11-11T01:34:35.549Z] INFO sandbox.command.complete sandboxId=sbx_mNN790UI6vTaB4i3wd3w3k9wmFDF step=create-workdir exitCode=0 signal=null
+[2025-11-11T01:34:35.550Z] INFO sandbox.command.start sandboxId=sbx_mNN790UI6vTaB4i3wd3w3k9wmFDF step=git-clone cmd=git args=["clone","--branch","main","--single-branch","--depth","1","https://github.com/vercel/next.js/tree/canary/examples/blog","/tmp/next-sandbox-app"] cwd=undefined detached=false
+[2025-11-11T01:34:36.071Z] WARN sandbox.command.stderr sandboxId=sbx_mNN790UI6vTaB4i3wd3w3k9wmFDF step=git-clone message="Cloning into '/tmp/next-sandbox-app'..."
+[2025-11-11T01:34:36.153Z] WARN sandbox.command.stderr sandboxId=sbx_mNN790UI6vTaB4i3wd3w3k9wmFDF step=git-clone message="fatal: repository 'https://github.com/vercel/next.js/tree/canary/examples/blog/' not found"
+[2025-11-11T01:34:36.273Z] INFO sandbox.command.complete sandboxId=sbx_mNN790UI6vTaB4i3wd3w3k9wmFDF step=git-clone exitCode=128 signal=null
+[2025-11-11T01:34:36.274Z] ERROR sandbox.bootstrap.error sandboxId=sbx_mNN790UI6vTaB4i3wd3w3k9wmFDF error="Sandbox command \"git-clone\" failed with exit code 128"
+[2025-11-11T01:34:36.426Z] WARN sandbox.provision.retry attemptNumber=2 retriesLeft=3 reason=force-provision-request
+[2025-11-11T01:34:40.428Z] INFO sandbox.provision.create.start reason=force-provision-request
+[2025-11-11T01:34:40.933Z] INFO sandbox.bootstrap.env sandboxId=sbx_IHh9ztN3jrhhUEVYw4Vl8UqW3un7 repoUrl=https://github.com/vercel/next.js/tree/canary/examples/blog gitRef=main workdir=/tmp/next-sandbox-app
+[2025-11-11T01:34:40.934Z] INFO sandbox.command.start sandboxId=sbx_IHh9ztN3jrhhUEVYw4Vl8UqW3un7 step=prepare-workdir cmd=rm args=["-rf","/tmp/next-sandbox-app"] cwd=undefined detached=false
+[2025-11-11T01:34:43.112Z] INFO sandbox.command.complete sandboxId=sbx_IHh9ztN3jrhhUEVYw4Vl8UqW3un7 step=prepare-workdir exitCode=0 signal=null
+[2025-11-11T01:34:43.113Z] INFO sandbox.command.start sandboxId=sbx_IHh9ztN3jrhhUEVYw4Vl8UqW3un7 step=create-workdir cmd=mkdir args=["-p","/tmp/next-sandbox-app"] cwd=undefined detached=false
+[2025-11-11T01:34:43.453Z] INFO sandbox.command.complete sandboxId=sbx_IHh9ztN3jrhhUEVYw4Vl8UqW3un7 step=create-workdir exitCode=0 signal=null
+[2025-11-11T01:34:43.454Z] INFO sandbox.command.start sandboxId=sbx_IHh9ztN3jrhhUEVYw4Vl8UqW3un7 step=git-clone cmd=git args=["clone","--branch","main","--single-branch","--depth","1","https://github.com/vercel/next.js/tree/canary/examples/blog","/tmp/next-sandbox-app"] cwd=undefined detached=false
+[2025-11-11T01:34:43.938Z] WARN sandbox.command.stderr sandboxId=sbx_IHh9ztN3jrhhUEVYw4Vl8UqW3un7 step=git-clone message="Cloning into '/tmp/next-sandbox-app'..."
+[2025-11-11T01:34:43.939Z] WARN sandbox.command.stderr sandboxId=sbx_IHh9ztN3jrhhUEVYw4Vl8UqW3un7 step=git-clone message="fatal: repository 'https://github.com/vercel/next.js/tree/canary/examples/blog/' not found"
+[2025-11-11T01:34:43.975Z] INFO sandbox.command.complete sandboxId=sbx_IHh9ztN3jrhhUEVYw4Vl8UqW3un7 step=git-clone exitCode=128 signal=null
+[2025-11-11T01:34:43.975Z] ERROR sandbox.bootstrap.error sandboxId=sbx_IHh9ztN3jrhhUEVYw4Vl8UqW3un7 error="Sandbox command \"git-clone\" failed with exit code 128"
+[2025-11-11T01:34:44.216Z] WARN sandbox.provision.retry attemptNumber=3 retriesLeft=2 reason=force-provision-request
+[2025-11-11T01:34:52.220Z] INFO sandbox.provision.create.start reason=force-provision-request
+[2025-11-11T01:34:52.753Z] INFO sandbox.bootstrap.env sandboxId=sbx_wpEwCVGF8B9zNiVznuCVkaoGtLbB repoUrl=https://github.com/vercel/next.js/tree/canary/examples/blog gitRef=main workdir=/tmp/next-sandbox-app
+[2025-11-11T01:34:52.754Z] INFO sandbox.command.start sandboxId=sbx_wpEwCVGF8B9zNiVznuCVkaoGtLbB step=prepare-workdir cmd=rm args=["-rf","/tmp/next-sandbox-app"] cwd=undefined detached=false
+[2025-11-11T01:34:54.844Z] INFO sandbox.command.complete sandboxId=sbx_wpEwCVGF8B9zNiVznuCVkaoGtLbB step=prepare-workdir exitCode=0 signal=null
+[2025-11-11T01:34:54.844Z] INFO sandbox.command.start sandboxId=sbx_wpEwCVGF8B9zNiVznuCVkaoGtLbB step=create-workdir cmd=mkdir args=["-p","/tmp/next-sandbox-app"] cwd=undefined detached=false
+[2025-11-11T01:34:55.359Z] INFO sandbox.command.complete sandboxId=sbx_wpEwCVGF8B9zNiVznuCVkaoGtLbB step=create-workdir exitCode=0 signal=null
+[2025-11-11T01:34:55.360Z] INFO sandbox.command.start sandboxId=sbx_wpEwCVGF8B9zNiVznuCVkaoGtLbB step=git-clone cmd=git args=["clone","--branch","main","--single-branch","--depth","1","https://github.com/vercel/next.js/tree/canary/examples/blog","/tmp/next-sandbox-app"] cwd=undefined detached=false
+[2025-11-11T01:34:55.702Z] WARN sandbox.command.stderr sandboxId=sbx_wpEwCVGF8B9zNiVznuCVkaoGtLbB step=git-clone message="Cloning into '/tmp/next-sandbox-app'..."
+[2025-11-11T01:34:55.882Z] WARN sandbox.command.stderr sandboxId=sbx_wpEwCVGF8B9zNiVznuCVkaoGtLbB step=git-clone message="fatal: repository 'https://github.com/vercel/next.js/tree/canary/examples/blog/' not found"
+[2025-11-11T01:34:55.889Z] INFO sandbox.command.complete sandboxId=sbx_wpEwCVGF8B9zNiVznuCVkaoGtLbB step=git-clone exitCode=128 signal=null
+[2025-11-11T01:34:55.889Z] ERROR sandbox.bootstrap.error sandboxId=sbx_wpEwCVGF8B9zNiVznuCVkaoGtLbB error="Sandbox command \"git-clone\" failed with exit code 128"
+[2025-11-11T01:34:56.169Z] WARN sandbox.provision.retry attemptNumber=4 retriesLeft=1 reason=force-provision-request
+[2025-11-11T01:35:12.171Z] INFO sandbox.provision.create.start reason=force-provision-request
+[2025-11-11T01:35:13.079Z] INFO sandbox.bootstrap.env sandboxId=sbx_REzzVLUoqpEpmZdcgPKKDwiUTJlg repoUrl=https://github.com/vercel/next.js/tree/canary/examples/blog gitRef=main workdir=/tmp/next-sandbox-app
+[2025-11-11T01:35:13.079Z] INFO sandbox.command.start sandboxId=sbx_REzzVLUoqpEpmZdcgPKKDwiUTJlg step=prepare-workdir cmd=rm args=["-rf","/tmp/next-sandbox-app"] cwd=undefined detached=false
+[2025-11-11T01:35:15.004Z] INFO sandbox.command.complete sandboxId=sbx_REzzVLUoqpEpmZdcgPKKDwiUTJlg step=prepare-workdir exitCode=0 signal=null
+[2025-11-11T01:35:15.007Z] INFO sandbox.command.start sandboxId=sbx_REzzVLUoqpEpmZdcgPKKDwiUTJlg step=create-workdir cmd=mkdir args=["-p","/tmp/next-sandbox-app"] cwd=undefined detached=false
+[2025-11-11T01:35:15.507Z] INFO sandbox.command.complete sandboxId=sbx_REzzVLUoqpEpmZdcgPKKDwiUTJlg step=create-workdir exitCode=0 signal=null
+[2025-11-11T01:35:15.508Z] INFO sandbox.command.start sandboxId=sbx_REzzVLUoqpEpmZdcgPKKDwiUTJlg step=git-clone cmd=git args=["clone","--branch","main","--single-branch","--depth","1","https://github.com/vercel/next.js/tree/canary/examples/blog","/tmp/next-sandbox-app"] cwd=undefined detached=false
+[2025-11-11T01:35:15.915Z] WARN sandbox.command.stderr sandboxId=sbx_REzzVLUoqpEpmZdcgPKKDwiUTJlg step=git-clone message="Cloning into '/tmp/next-sandbox-app'..."
+[2025-11-11T01:35:15.917Z] WARN sandbox.command.stderr sandboxId=sbx_REzzVLUoqpEpmZdcgPKKDwiUTJlg step=git-clone message="fatal: repository 'https://github.com/vercel/next.js/tree/canary/examples/blog/' not found"
+[2025-11-11T01:35:15.920Z] INFO sandbox.command.complete sandboxId=sbx_REzzVLUoqpEpmZdcgPKKDwiUTJlg step=git-clone exitCode=128 signal=null
+[2025-11-11T01:35:15.920Z] ERROR sandbox.bootstrap.error sandboxId=sbx_REzzVLUoqpEpmZdcgPKKDwiUTJlg error="Sandbox command \"git-clone\" failed with exit code 128"
+[2025-11-11T01:35:16.012Z] WARN sandbox.provision.retry attemptNumber=5 retriesLeft=0 reason=force-provision-request
+[2025-11-11T01:35:16.013Z] ERROR watchdog.tick.failed reason="Sandbox command \"git-clone\" failed with exit code 128" stack="Error: Sandbox command \"git-clone\" failed with exit code 128\n    at runSandboxCommand (/Users/danfein/Code/sandbox-router/apps/next-app/.next/dev/server/chunks/[root-of-the-server]__4036d19f._.js:713:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async attempt (/Users/danfein/Code/sandbox-router/apps/next-app/.next/dev/server/chunks/[root-of-the-server]__4036d19f._.js:484:13)\n    at async RetryOperation._fn (/Users/danfein/Code/sandbox-router/apps/next-app/.next/dev/server/chunks/f3407__pnpm_65ac8fa9._.js:5276:32)"
+Error: edge-config-update-failed: 403 {"error":{"code":"forbidden","message":"Not authorized","invalidToken":true}}
+    at updateEdgeConfig (app/api/watchdog/watchdog.ts:522:11)
+    at async persistState (app/api/watchdog/watchdog.ts:413:3)
+    at async handler (app/api/watchdog/watchdog.ts:108:5)
+[0m [90m 520 |[39m   [36mif[39m ([33m![39mresponse[33m.[39mok) {
+ [90m 521 |[39m     [36mconst[39m error [33m=[39m [36mawait[39m response[33m.[39mtext()[33m;[39m
+[31m[1m>[22m[39m[90m 522 |[39m     [36mthrow[39m [36mnew[39m [33mError[39m([32m`edge-config-update-failed: ${response.status} ${error}`[39m)[33m;[39m
+ [90m     |[39m           [31m[1m^[22m[39m
+ [90m 523 |[39m   }
+ [90m 524 |[39m }
+ [90m 525 |[39m[0m
+ GET /api/watchdog?force [31m500[39m in 52s[2m (compile: 296ms, proxy.ts: 5ms, render: 51s)[22m
