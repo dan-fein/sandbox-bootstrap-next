@@ -19,85 +19,111 @@
 
  [32m[1m✓[22m[39m Starting...
  [33m[1m⚠[22m[39m The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
- [32m[1m✓[22m[39m Ready in 833ms
-{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/","rewriteUrl":"https://sb-1s604rd856hi.vercel.run/","probeStatus":200}
- GET /api/health [32m200[39m in 303ms[2m (compile: 274ms, proxy.ts: 16ms, render: 13ms)[22m
-{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/","rewriteUrl":"https://sb-1s604rd856hi.vercel.run/","probeStatus":200}
- GET /api/health [32m200[39m in 26ms[2m (compile: 8ms, proxy.ts: 3ms, render: 15ms)[22m
-{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/","rewriteUrl":"https://sb-1s604rd856hi.vercel.run/","probeStatus":200}
- GET /api/health [32m200[39m in 15ms[2m (compile: 7ms, proxy.ts: 4ms, render: 4ms)[22m
-[2025-11-11T01:34:25.500Z] INFO watchdog.tick state={"draining":[{"id":"sbx_2dQwCfMxsMcnHJwFswuRbbH0qgsy","url":"https://sb-1ki4uopwn6c2.vercel.run","createdAt":"2025-11-10T14:14:58.801Z","status":"healthy","drainStartedAt":"2025-11-10T21:35:18.524Z"}],"active":{"id":"sbx_KQ1iQkWRcC3AThER3BN1BAJdQzDO","url":"https://sb-1s604rd856hi.vercel.run","createdAt":"2025-11-10T21:35:18.133Z","status":"healthy"},"lastRotationAt":"2025-11-10T21:35:18.524Z","lastCheckAt":"2025-11-10T21:35:19.266Z","lastFailure":null} forceProvision=true
-[2025-11-11T01:34:25.502Z] INFO sandbox.provision.start reason=force-provision-request previous=sbx_KQ1iQkWRcC3AThER3BN1BAJdQzDO
-[2025-11-11T01:34:25.503Z] INFO sandbox.provision.create.start reason=force-provision-request
-[2025-11-11T01:34:26.294Z] INFO sandbox.bootstrap.env sandboxId=sbx_eXRFkbcu1bCGoQ5OyJefbBSyWIJA repoUrl=https://github.com/vercel/next.js/tree/canary/examples/blog gitRef=main workdir=/tmp/next-sandbox-app
-[2025-11-11T01:34:26.294Z] INFO sandbox.command.start sandboxId=sbx_eXRFkbcu1bCGoQ5OyJefbBSyWIJA step=prepare-workdir cmd=rm args=["-rf","/tmp/next-sandbox-app"] cwd=undefined detached=false
-[2025-11-11T01:34:28.480Z] INFO sandbox.command.complete sandboxId=sbx_eXRFkbcu1bCGoQ5OyJefbBSyWIJA step=prepare-workdir exitCode=0 signal=null
-[2025-11-11T01:34:28.480Z] INFO sandbox.command.start sandboxId=sbx_eXRFkbcu1bCGoQ5OyJefbBSyWIJA step=create-workdir cmd=mkdir args=["-p","/tmp/next-sandbox-app"] cwd=undefined detached=false
-[2025-11-11T01:34:28.943Z] INFO sandbox.command.complete sandboxId=sbx_eXRFkbcu1bCGoQ5OyJefbBSyWIJA step=create-workdir exitCode=0 signal=null
-[2025-11-11T01:34:28.945Z] INFO sandbox.command.start sandboxId=sbx_eXRFkbcu1bCGoQ5OyJefbBSyWIJA step=git-clone cmd=git args=["clone","--branch","main","--single-branch","--depth","1","https://github.com/vercel/next.js/tree/canary/examples/blog","/tmp/next-sandbox-app"] cwd=undefined detached=false
-[2025-11-11T01:34:29.427Z] WARN sandbox.command.stderr sandboxId=sbx_eXRFkbcu1bCGoQ5OyJefbBSyWIJA step=git-clone message="Cloning into '/tmp/next-sandbox-app'..."
-[2025-11-11T01:34:30.097Z] INFO sandbox.command.complete sandboxId=sbx_eXRFkbcu1bCGoQ5OyJefbBSyWIJA step=git-clone exitCode=128 signal=null
-[2025-11-11T01:34:30.098Z] ERROR sandbox.bootstrap.error sandboxId=sbx_eXRFkbcu1bCGoQ5OyJefbBSyWIJA error="Sandbox command \"git-clone\" failed with exit code 128"
-[2025-11-11T01:34:30.100Z] WARN sandbox.command.stderr sandboxId=sbx_eXRFkbcu1bCGoQ5OyJefbBSyWIJA step=git-clone message="fatal: repository 'https://github.com/vercel/next.js/tree/canary/examples/blog/' not found"
-[2025-11-11T01:34:30.344Z] WARN sandbox.provision.retry attemptNumber=1 retriesLeft=4 reason=force-provision-request
-[2025-11-11T01:34:32.356Z] INFO sandbox.provision.create.start reason=force-provision-request
-[2025-11-11T01:34:33.066Z] INFO sandbox.bootstrap.env sandboxId=sbx_mNN790UI6vTaB4i3wd3w3k9wmFDF repoUrl=https://github.com/vercel/next.js/tree/canary/examples/blog gitRef=main workdir=/tmp/next-sandbox-app
-[2025-11-11T01:34:33.066Z] INFO sandbox.command.start sandboxId=sbx_mNN790UI6vTaB4i3wd3w3k9wmFDF step=prepare-workdir cmd=rm args=["-rf","/tmp/next-sandbox-app"] cwd=undefined detached=false
-[2025-11-11T01:34:35.057Z] INFO sandbox.command.complete sandboxId=sbx_mNN790UI6vTaB4i3wd3w3k9wmFDF step=prepare-workdir exitCode=0 signal=null
-[2025-11-11T01:34:35.057Z] INFO sandbox.command.start sandboxId=sbx_mNN790UI6vTaB4i3wd3w3k9wmFDF step=create-workdir cmd=mkdir args=["-p","/tmp/next-sandbox-app"] cwd=undefined detached=false
-[2025-11-11T01:34:35.549Z] INFO sandbox.command.complete sandboxId=sbx_mNN790UI6vTaB4i3wd3w3k9wmFDF step=create-workdir exitCode=0 signal=null
-[2025-11-11T01:34:35.550Z] INFO sandbox.command.start sandboxId=sbx_mNN790UI6vTaB4i3wd3w3k9wmFDF step=git-clone cmd=git args=["clone","--branch","main","--single-branch","--depth","1","https://github.com/vercel/next.js/tree/canary/examples/blog","/tmp/next-sandbox-app"] cwd=undefined detached=false
-[2025-11-11T01:34:36.071Z] WARN sandbox.command.stderr sandboxId=sbx_mNN790UI6vTaB4i3wd3w3k9wmFDF step=git-clone message="Cloning into '/tmp/next-sandbox-app'..."
-[2025-11-11T01:34:36.153Z] WARN sandbox.command.stderr sandboxId=sbx_mNN790UI6vTaB4i3wd3w3k9wmFDF step=git-clone message="fatal: repository 'https://github.com/vercel/next.js/tree/canary/examples/blog/' not found"
-[2025-11-11T01:34:36.273Z] INFO sandbox.command.complete sandboxId=sbx_mNN790UI6vTaB4i3wd3w3k9wmFDF step=git-clone exitCode=128 signal=null
-[2025-11-11T01:34:36.274Z] ERROR sandbox.bootstrap.error sandboxId=sbx_mNN790UI6vTaB4i3wd3w3k9wmFDF error="Sandbox command \"git-clone\" failed with exit code 128"
-[2025-11-11T01:34:36.426Z] WARN sandbox.provision.retry attemptNumber=2 retriesLeft=3 reason=force-provision-request
-[2025-11-11T01:34:40.428Z] INFO sandbox.provision.create.start reason=force-provision-request
-[2025-11-11T01:34:40.933Z] INFO sandbox.bootstrap.env sandboxId=sbx_IHh9ztN3jrhhUEVYw4Vl8UqW3un7 repoUrl=https://github.com/vercel/next.js/tree/canary/examples/blog gitRef=main workdir=/tmp/next-sandbox-app
-[2025-11-11T01:34:40.934Z] INFO sandbox.command.start sandboxId=sbx_IHh9ztN3jrhhUEVYw4Vl8UqW3un7 step=prepare-workdir cmd=rm args=["-rf","/tmp/next-sandbox-app"] cwd=undefined detached=false
-[2025-11-11T01:34:43.112Z] INFO sandbox.command.complete sandboxId=sbx_IHh9ztN3jrhhUEVYw4Vl8UqW3un7 step=prepare-workdir exitCode=0 signal=null
-[2025-11-11T01:34:43.113Z] INFO sandbox.command.start sandboxId=sbx_IHh9ztN3jrhhUEVYw4Vl8UqW3un7 step=create-workdir cmd=mkdir args=["-p","/tmp/next-sandbox-app"] cwd=undefined detached=false
-[2025-11-11T01:34:43.453Z] INFO sandbox.command.complete sandboxId=sbx_IHh9ztN3jrhhUEVYw4Vl8UqW3un7 step=create-workdir exitCode=0 signal=null
-[2025-11-11T01:34:43.454Z] INFO sandbox.command.start sandboxId=sbx_IHh9ztN3jrhhUEVYw4Vl8UqW3un7 step=git-clone cmd=git args=["clone","--branch","main","--single-branch","--depth","1","https://github.com/vercel/next.js/tree/canary/examples/blog","/tmp/next-sandbox-app"] cwd=undefined detached=false
-[2025-11-11T01:34:43.938Z] WARN sandbox.command.stderr sandboxId=sbx_IHh9ztN3jrhhUEVYw4Vl8UqW3un7 step=git-clone message="Cloning into '/tmp/next-sandbox-app'..."
-[2025-11-11T01:34:43.939Z] WARN sandbox.command.stderr sandboxId=sbx_IHh9ztN3jrhhUEVYw4Vl8UqW3un7 step=git-clone message="fatal: repository 'https://github.com/vercel/next.js/tree/canary/examples/blog/' not found"
-[2025-11-11T01:34:43.975Z] INFO sandbox.command.complete sandboxId=sbx_IHh9ztN3jrhhUEVYw4Vl8UqW3un7 step=git-clone exitCode=128 signal=null
-[2025-11-11T01:34:43.975Z] ERROR sandbox.bootstrap.error sandboxId=sbx_IHh9ztN3jrhhUEVYw4Vl8UqW3un7 error="Sandbox command \"git-clone\" failed with exit code 128"
-[2025-11-11T01:34:44.216Z] WARN sandbox.provision.retry attemptNumber=3 retriesLeft=2 reason=force-provision-request
-[2025-11-11T01:34:52.220Z] INFO sandbox.provision.create.start reason=force-provision-request
-[2025-11-11T01:34:52.753Z] INFO sandbox.bootstrap.env sandboxId=sbx_wpEwCVGF8B9zNiVznuCVkaoGtLbB repoUrl=https://github.com/vercel/next.js/tree/canary/examples/blog gitRef=main workdir=/tmp/next-sandbox-app
-[2025-11-11T01:34:52.754Z] INFO sandbox.command.start sandboxId=sbx_wpEwCVGF8B9zNiVznuCVkaoGtLbB step=prepare-workdir cmd=rm args=["-rf","/tmp/next-sandbox-app"] cwd=undefined detached=false
-[2025-11-11T01:34:54.844Z] INFO sandbox.command.complete sandboxId=sbx_wpEwCVGF8B9zNiVznuCVkaoGtLbB step=prepare-workdir exitCode=0 signal=null
-[2025-11-11T01:34:54.844Z] INFO sandbox.command.start sandboxId=sbx_wpEwCVGF8B9zNiVznuCVkaoGtLbB step=create-workdir cmd=mkdir args=["-p","/tmp/next-sandbox-app"] cwd=undefined detached=false
-[2025-11-11T01:34:55.359Z] INFO sandbox.command.complete sandboxId=sbx_wpEwCVGF8B9zNiVznuCVkaoGtLbB step=create-workdir exitCode=0 signal=null
-[2025-11-11T01:34:55.360Z] INFO sandbox.command.start sandboxId=sbx_wpEwCVGF8B9zNiVznuCVkaoGtLbB step=git-clone cmd=git args=["clone","--branch","main","--single-branch","--depth","1","https://github.com/vercel/next.js/tree/canary/examples/blog","/tmp/next-sandbox-app"] cwd=undefined detached=false
-[2025-11-11T01:34:55.702Z] WARN sandbox.command.stderr sandboxId=sbx_wpEwCVGF8B9zNiVznuCVkaoGtLbB step=git-clone message="Cloning into '/tmp/next-sandbox-app'..."
-[2025-11-11T01:34:55.882Z] WARN sandbox.command.stderr sandboxId=sbx_wpEwCVGF8B9zNiVznuCVkaoGtLbB step=git-clone message="fatal: repository 'https://github.com/vercel/next.js/tree/canary/examples/blog/' not found"
-[2025-11-11T01:34:55.889Z] INFO sandbox.command.complete sandboxId=sbx_wpEwCVGF8B9zNiVznuCVkaoGtLbB step=git-clone exitCode=128 signal=null
-[2025-11-11T01:34:55.889Z] ERROR sandbox.bootstrap.error sandboxId=sbx_wpEwCVGF8B9zNiVznuCVkaoGtLbB error="Sandbox command \"git-clone\" failed with exit code 128"
-[2025-11-11T01:34:56.169Z] WARN sandbox.provision.retry attemptNumber=4 retriesLeft=1 reason=force-provision-request
-[2025-11-11T01:35:12.171Z] INFO sandbox.provision.create.start reason=force-provision-request
-[2025-11-11T01:35:13.079Z] INFO sandbox.bootstrap.env sandboxId=sbx_REzzVLUoqpEpmZdcgPKKDwiUTJlg repoUrl=https://github.com/vercel/next.js/tree/canary/examples/blog gitRef=main workdir=/tmp/next-sandbox-app
-[2025-11-11T01:35:13.079Z] INFO sandbox.command.start sandboxId=sbx_REzzVLUoqpEpmZdcgPKKDwiUTJlg step=prepare-workdir cmd=rm args=["-rf","/tmp/next-sandbox-app"] cwd=undefined detached=false
-[2025-11-11T01:35:15.004Z] INFO sandbox.command.complete sandboxId=sbx_REzzVLUoqpEpmZdcgPKKDwiUTJlg step=prepare-workdir exitCode=0 signal=null
-[2025-11-11T01:35:15.007Z] INFO sandbox.command.start sandboxId=sbx_REzzVLUoqpEpmZdcgPKKDwiUTJlg step=create-workdir cmd=mkdir args=["-p","/tmp/next-sandbox-app"] cwd=undefined detached=false
-[2025-11-11T01:35:15.507Z] INFO sandbox.command.complete sandboxId=sbx_REzzVLUoqpEpmZdcgPKKDwiUTJlg step=create-workdir exitCode=0 signal=null
-[2025-11-11T01:35:15.508Z] INFO sandbox.command.start sandboxId=sbx_REzzVLUoqpEpmZdcgPKKDwiUTJlg step=git-clone cmd=git args=["clone","--branch","main","--single-branch","--depth","1","https://github.com/vercel/next.js/tree/canary/examples/blog","/tmp/next-sandbox-app"] cwd=undefined detached=false
-[2025-11-11T01:35:15.915Z] WARN sandbox.command.stderr sandboxId=sbx_REzzVLUoqpEpmZdcgPKKDwiUTJlg step=git-clone message="Cloning into '/tmp/next-sandbox-app'..."
-[2025-11-11T01:35:15.917Z] WARN sandbox.command.stderr sandboxId=sbx_REzzVLUoqpEpmZdcgPKKDwiUTJlg step=git-clone message="fatal: repository 'https://github.com/vercel/next.js/tree/canary/examples/blog/' not found"
-[2025-11-11T01:35:15.920Z] INFO sandbox.command.complete sandboxId=sbx_REzzVLUoqpEpmZdcgPKKDwiUTJlg step=git-clone exitCode=128 signal=null
-[2025-11-11T01:35:15.920Z] ERROR sandbox.bootstrap.error sandboxId=sbx_REzzVLUoqpEpmZdcgPKKDwiUTJlg error="Sandbox command \"git-clone\" failed with exit code 128"
-[2025-11-11T01:35:16.012Z] WARN sandbox.provision.retry attemptNumber=5 retriesLeft=0 reason=force-provision-request
-[2025-11-11T01:35:16.013Z] ERROR watchdog.tick.failed reason="Sandbox command \"git-clone\" failed with exit code 128" stack="Error: Sandbox command \"git-clone\" failed with exit code 128\n    at runSandboxCommand (/Users/danfein/Code/sandbox-router/apps/next-app/.next/dev/server/chunks/[root-of-the-server]__4036d19f._.js:713:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async attempt (/Users/danfein/Code/sandbox-router/apps/next-app/.next/dev/server/chunks/[root-of-the-server]__4036d19f._.js:484:13)\n    at async RetryOperation._fn (/Users/danfein/Code/sandbox-router/apps/next-app/.next/dev/server/chunks/f3407__pnpm_65ac8fa9._.js:5276:32)"
-Error: edge-config-update-failed: 403 {"error":{"code":"forbidden","message":"Not authorized","invalidToken":true}}
-    at updateEdgeConfig (app/api/watchdog/watchdog.ts:522:11)
-    at async persistState (app/api/watchdog/watchdog.ts:413:3)
-    at async handler (app/api/watchdog/watchdog.ts:108:5)
-[0m [90m 520 |[39m   [36mif[39m ([33m![39mresponse[33m.[39mok) {
- [90m 521 |[39m     [36mconst[39m error [33m=[39m [36mawait[39m response[33m.[39mtext()[33m;[39m
-[31m[1m>[22m[39m[90m 522 |[39m     [36mthrow[39m [36mnew[39m [33mError[39m([32m`edge-config-update-failed: ${response.status} ${error}`[39m)[33m;[39m
- [90m     |[39m           [31m[1m^[22m[39m
- [90m 523 |[39m   }
- [90m 524 |[39m }
- [90m 525 |[39m[0m
- GET /api/watchdog?force [31m500[39m in 52s[2m (compile: 296ms, proxy.ts: 5ms, render: 51s)[22m
+ [32m[1m✓[22m[39m Ready in 851ms
+ GET /local-home [32m200[39m in 1076ms[2m (compile: 783ms, proxy.ts: 160ms, render: 134ms)[22m
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/Code_sandbox-router_apps_next-app_app_globals_01402292.css","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/Code_sandbox-router_apps_next-app_app_globals_01402292.css","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/%5Bturbopack%5D_browser_dev_hmr-client_hmr-client_ts_79b64b42._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/%5Bturbopack%5D_browser_dev_hmr-client_hmr-client_ts_79b64b42._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_compiled_react-dom_b547a603._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_compiled_react-dom_b547a603._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_compiled_next-devtools_index_5a1e6674.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_compiled_next-devtools_index_5a1e6674.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_compiled_react-server-dom-turbopack_c674b957._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_compiled_react-server-dom-turbopack_c674b957._.js","probeStatus":404}
+ GET /local-home [32m200[39m in 374ms[2m (compile: 5ms, proxy.ts: 7ms, render: 362ms)[22m
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_compiled_8f0f2599._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_compiled_8f0f2599._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_client_db39493a._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_client_db39493a._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_2bd1a4da._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_2bd1a4da._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/e4f5f_%40swc_helpers_cjs_6dadc154._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/e4f5f_%40swc_helpers_cjs_6dadc154._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/Code_sandbox-router_apps_next-app_a0ff3932._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/Code_sandbox-router_apps_next-app_a0ff3932._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/turbopack-Code_sandbox-router_apps_next-app_bc5c8bce._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/turbopack-Code_sandbox-router_apps_next-app_bc5c8bce._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_1f081026._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_1f081026._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/Code_sandbox-router_apps_next-app_app_layout_tsx_6a69a2cc._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/Code_sandbox-router_apps_next-app_app_layout_tsx_6a69a2cc._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_client_components_builtin_global-error_6a69a2cc.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_client_components_builtin_global-error_6a69a2cc.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/Code_sandbox-router_apps_next-app_app_local-home_page_tsx_27854622._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/Code_sandbox-router_apps_next-app_app_local-home_page_tsx_27854622._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_5194a99d._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_5194a99d._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_compiled_react-dom_b547a603._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_compiled_react-dom_b547a603._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/Code_sandbox-router_apps_next-app_app_globals_01402292.css","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/Code_sandbox-router_apps_next-app_app_globals_01402292.css","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/%5Bturbopack%5D_browser_dev_hmr-client_hmr-client_ts_79b64b42._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/%5Bturbopack%5D_browser_dev_hmr-client_hmr-client_ts_79b64b42._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_compiled_react-server-dom-turbopack_c674b957._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_compiled_react-server-dom-turbopack_c674b957._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_compiled_next-devtools_index_5a1e6674.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_compiled_next-devtools_index_5a1e6674.js","probeStatus":404}
+ GET /local-home [32m200[39m in 374ms[2m (compile: 4ms, proxy.ts: 8ms, render: 362ms)[22m
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_client_db39493a._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_client_db39493a._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/e4f5f_%40swc_helpers_cjs_6dadc154._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/e4f5f_%40swc_helpers_cjs_6dadc154._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_compiled_8f0f2599._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_compiled_8f0f2599._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_2bd1a4da._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_2bd1a4da._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/Code_sandbox-router_apps_next-app_a0ff3932._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/Code_sandbox-router_apps_next-app_a0ff3932._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/turbopack-Code_sandbox-router_apps_next-app_bc5c8bce._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/turbopack-Code_sandbox-router_apps_next-app_bc5c8bce._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_1f081026._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_1f081026._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_client_components_builtin_global-error_6a69a2cc.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_client_components_builtin_global-error_6a69a2cc.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/Code_sandbox-router_apps_next-app_app_layout_tsx_6a69a2cc._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/Code_sandbox-router_apps_next-app_app_layout_tsx_6a69a2cc._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_5194a99d._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_5194a99d._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/Code_sandbox-router_apps_next-app_app_local-home_page_tsx_27854622._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/Code_sandbox-router_apps_next-app_app_local-home_page_tsx_27854622._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/%5Bturbopack%5D_browser_dev_hmr-client_hmr-client_ts_79b64b42._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/%5Bturbopack%5D_browser_dev_hmr-client_hmr-client_ts_79b64b42._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/Code_sandbox-router_apps_next-app_app_globals_01402292.css","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/Code_sandbox-router_apps_next-app_app_globals_01402292.css","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_compiled_react-server-dom-turbopack_c674b957._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_compiled_react-server-dom-turbopack_c674b957._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_compiled_react-dom_b547a603._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_compiled_react-dom_b547a603._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_compiled_next-devtools_index_5a1e6674.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_compiled_next-devtools_index_5a1e6674.js","probeStatus":404}
+ GET /local-home [32m200[39m in 396ms[2m (compile: 6ms, proxy.ts: 19ms, render: 370ms)[22m
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_compiled_8f0f2599._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_compiled_8f0f2599._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_2bd1a4da._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_2bd1a4da._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_client_db39493a._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_client_db39493a._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/Code_sandbox-router_apps_next-app_a0ff3932._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/Code_sandbox-router_apps_next-app_a0ff3932._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/turbopack-Code_sandbox-router_apps_next-app_bc5c8bce._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/turbopack-Code_sandbox-router_apps_next-app_bc5c8bce._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/e4f5f_%40swc_helpers_cjs_6dadc154._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/e4f5f_%40swc_helpers_cjs_6dadc154._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/Code_sandbox-router_apps_next-app_app_layout_tsx_6a69a2cc._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/Code_sandbox-router_apps_next-app_app_layout_tsx_6a69a2cc._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_client_components_builtin_global-error_6a69a2cc.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_client_components_builtin_global-error_6a69a2cc.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_1f081026._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_1f081026._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_5194a99d._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_5194a99d._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/Code_sandbox-router_apps_next-app_app_local-home_page_tsx_27854622._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/Code_sandbox-router_apps_next-app_app_local-home_page_tsx_27854622._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/Code_sandbox-router_apps_next-app_app_globals_01402292.css","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/Code_sandbox-router_apps_next-app_app_globals_01402292.css","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/%5Bturbopack%5D_browser_dev_hmr-client_hmr-client_ts_79b64b42._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/%5Bturbopack%5D_browser_dev_hmr-client_hmr-client_ts_79b64b42._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_compiled_next-devtools_index_5a1e6674.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_compiled_next-devtools_index_5a1e6674.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_compiled_react-dom_b547a603._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_compiled_react-dom_b547a603._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_compiled_react-server-dom-turbopack_c674b957._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_compiled_react-server-dom-turbopack_c674b957._.js","probeStatus":404}
+ GET /local-home [32m200[39m in 391ms[2m (compile: 6ms, proxy.ts: 11ms, render: 375ms)[22m
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_compiled_8f0f2599._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_compiled_8f0f2599._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_2bd1a4da._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_2bd1a4da._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/e4f5f_%40swc_helpers_cjs_6dadc154._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/e4f5f_%40swc_helpers_cjs_6dadc154._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/Code_sandbox-router_apps_next-app_a0ff3932._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/Code_sandbox-router_apps_next-app_a0ff3932._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_client_db39493a._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_client_db39493a._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/turbopack-Code_sandbox-router_apps_next-app_bc5c8bce._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/turbopack-Code_sandbox-router_apps_next-app_bc5c8bce._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_1f081026._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_1f081026._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_client_components_builtin_global-error_6a69a2cc.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_client_components_builtin_global-error_6a69a2cc.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/8baee_next_dist_5194a99d._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/8baee_next_dist_5194a99d._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/Code_sandbox-router_apps_next-app_app_local-home_page_tsx_27854622._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/Code_sandbox-router_apps_next-app_app_local-home_page_tsx_27854622._.js","probeStatus":404}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/_next/static/chunks/Code_sandbox-router_apps_next-app_app_layout_tsx_6a69a2cc._.js","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/_next/static/chunks/Code_sandbox-router_apps_next-app_app_layout_tsx_6a69a2cc._.js","probeStatus":404}
+ [32m[1m✓[22m[39m Compiled in 62ms
+ [32m[1m✓[22m[39m Compiled in 17ms
+ GET /local-home [32m200[39m in 635ms[2m (compile: 80ms, proxy.ts: 153ms, render: 402ms)[22m
+ GET /api/health [32m200[39m in 257ms[2m (compile: 242ms, proxy.ts: 6ms, render: 10ms)[22m
+ GET /api/health [32m200[39m in 9ms[2m (compile: 3ms, proxy.ts: 2ms, render: 4ms)[22m
+ GET /local-home [32m200[39m in 447ms[2m (compile: 10ms, proxy.ts: 65ms, render: 372ms)[22m
+ GET /api/health [32m200[39m in 29ms[2m (compile: 10ms, proxy.ts: 12ms, render: 8ms)[22m
+ GET /api/health [32m200[39m in 7ms[2m (compile: 2ms, proxy.ts: 1953µs, render: 3ms)[22m
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/","probeStatus":200}
+ GET /api/health [32m200[39m in 25ms[2m (compile: 17ms, proxy.ts: 3ms, render: 5ms)[22m
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/home","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/home","probeStatus":404}
+ GET /local-home [32m200[39m in 380ms[2m (compile: 6ms, proxy.ts: 7ms, render: 368ms)[22m
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/internal/keepalive","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/internal/keepalive","probeStatus":401}
+{"event":"middleware.sandbox-routing","kind":"active","method":"GET","path":"/internal/keepalive","rewriteUrl":"https://sb-2apkgx29xd20.vercel.run/internal/keepalive","probeStatus":401}
+ GET /local-home [32m200[39m in 376ms[2m (compile: 5ms, proxy.ts: 4ms, render: 367ms)[22m
+ [32m[1m✓[22m[39m Compiled in 88ms
+ GET /local-home [32m200[39m in 941ms[2m (compile: 472ms, proxy.ts: 19ms, render: 450ms)[22m
+ GET /local-home [32m200[39m in 372ms[2m (compile: 2ms, proxy.ts: 3ms, render: 367ms)[22m
+ GET /local-home [32m200[39m in 485ms[2m (compile: 11ms, proxy.ts: 16ms, render: 459ms)[22m
+ [32m[1m✓[22m[39m Compiled in 426ms
+ GET /api/health [32m200[39m in 10ms[2m (compile: 2ms, proxy.ts: 1537µs, render: 6ms)[22m
+ GET /local-home [32m200[39m in 1675ms[2m (compile: 863ms, proxy.ts: 109ms, render: 703ms)[22m
+ [32m[1m✓[22m[39m Compiled in 16ms
+ GET /local-home [32m200[39m in 877ms[2m (compile: 91ms, proxy.ts: 9ms, render: 777ms)[22m
+ GET /api/health [32m200[39m in 16ms[2m (compile: 5ms, proxy.ts: 1538µs, render: 10ms)[22m
+ GET /local-home [32m200[39m in 597ms[2m (compile: 17ms, proxy.ts: 10ms, render: 571ms)[22m
+ GET /api/health [32m200[39m in 9ms[2m (compile: 2ms, proxy.ts: 4ms, render: 3ms)[22m
+ GET /api/health [32m200[39m in 5ms[2m (compile: 1516µs, proxy.ts: 1482µs, render: 2ms)[22m
+ [32m[1m✓[22m[39m Compiled in 18ms
+ GET /api/health [32m200[39m in 18ms[2m (compile: 6ms, proxy.ts: 5ms, render: 7ms)[22m
+ GET /api/health [32m200[39m in 6ms[2m (compile: 1728µs, proxy.ts: 2ms, render: 2ms)[22m
+ GET /local-home [32m200[39m in 737ms[2m (compile: 107ms, proxy.ts: 5ms, render: 626ms)[22m
+ GET /api/health [32m200[39m in 8ms[2m (compile: 1807µs, proxy.ts: 1447µs, render: 5ms)[22m
+ GET /local-home [32m200[39m in 437ms[2m (compile: 2ms, proxy.ts: 2ms, render: 433ms)[22m
+ GET /api/health [32m200[39m in 11ms[2m (compile: 5ms, proxy.ts: 1482µs, render: 4ms)[22m
+ GET /local-home [32m200[39m in 422ms[2m (compile: 2ms, proxy.ts: 3ms, render: 417ms)[22m
+ GET /api/health [32m200[39m in 5ms[2m (compile: 1765µs, proxy.ts: 1632µs, render: 1784µs)[22m
+ GET /local-home [32m200[39m in 439ms[2m (compile: 4ms, proxy.ts: 7ms, render: 429ms)[22m

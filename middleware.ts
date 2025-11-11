@@ -14,6 +14,7 @@ const LEGACY_EDGE_CONFIG_KEYS = {
 const SANDBOX_BYPASS_HEADER = 'x-sandbox-bypass';
 const ROUTE_BYPASS_PREFIXES = ['/api', '/watchdog', '/favicon.ico', '/robots.txt', '/sitemap', '/bootstrap.js', '/bootstrap.js.map'];
 const DEBUG_SANDBOX_ROUTING = process.env.DEBUG_SANDBOX_ROUTING === 'true';
+const LOCAL_HOME_PREFIX = '/local-home';
 
 function shouldBypassMiddleware(request: NextRequest): boolean {
   if (isSelfRequest(request) || process.env.DISABLE_EDGE_REWRITE === 'true') {
@@ -25,6 +26,13 @@ function shouldBypassMiddleware(request: NextRequest): boolean {
   }
 
   const { pathname } = request.nextUrl;
+  if (pathname.startsWith('/_next')) {
+    const referer = request.headers.get('referer') ?? '';
+    if (referer.includes(LOCAL_HOME_PREFIX)) {
+      return true;
+    }
+  }
+
   return ROUTE_BYPASS_PREFIXES.some(prefix => pathname.startsWith(prefix));
 }
 
@@ -57,6 +65,12 @@ function safeHostFromUrl(urlString: string): string | null {
 }
 
 export async function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  if (pathname.startsWith(LOCAL_HOME_PREFIX)) {
+    return await handleLocalHome(request);
+  }
+
   if (shouldBypassMiddleware(request)) {
     return NextResponse.next();
   }
@@ -64,46 +78,12 @@ export async function middleware(request: NextRequest) {
   try {
     const activeUrl = await readEdgeConfigUrl([EDGE_CONFIG_KEYS.active, LEGACY_EDGE_CONFIG_KEYS.active]);
     if (activeUrl) {
-      const rewriteUrl = composeSandboxUrl(activeUrl, request);
-      const debug = await probeSandbox(rewriteUrl, request);
-      const sandboxOrigin = new URL(activeUrl).origin;
-      const requestHeaders = new Headers(request.headers);
-      requestHeaders.set('x-sandbox-origin', sandboxOrigin);
-      const response = NextResponse.rewrite(rewriteUrl, {
-        request: { headers: requestHeaders },
-      });
-      response.headers.set('x-sandbox-origin', sandboxOrigin);
-      response.headers.set('x-sandbox-routing', 'edge-rewrite');
-      if (debug) {
-        response.headers.set('x-sandbox-probe-status', String(debug.status));
-        if (debug.error) {
-          response.headers.set('x-sandbox-probe-error', debug.error);
-        }
-      }
-      logSandboxRouting('active', request, rewriteUrl, debug);
-      return response;
+      return await rewriteToSandbox('active', activeUrl, request);
     }
 
     const fallbackUrl = await readEdgeConfigUrl([EDGE_CONFIG_KEYS.lastKnownGood, LEGACY_EDGE_CONFIG_KEYS.lastKnownGood]);
     if (fallbackUrl) {
-      const rewriteUrl = composeSandboxUrl(fallbackUrl, request);
-      const debug = await probeSandbox(rewriteUrl, request);
-      const sandboxOrigin = new URL(fallbackUrl).origin;
-      const requestHeaders = new Headers(request.headers);
-      requestHeaders.set('x-sandbox-origin', sandboxOrigin);
-      const response = NextResponse.rewrite(rewriteUrl, {
-        request: { headers: requestHeaders },
-      });
-      response.headers.set('x-sandbox-origin', sandboxOrigin);
-      response.headers.set('x-sandbox-routing', 'edge-rewrite-stale');
-      if (debug) {
-        response.headers.set('x-sandbox-probe-status', String(debug.status));
-        if (debug.error) {
-          response.headers.set('x-sandbox-probe-error', debug.error);
-        }
-      }
-      logSandboxRouting('fallback', request, rewriteUrl, debug);
-      return response;
+      return await rewriteToSandbox('fallback', fallbackUrl, request);
     }
   } catch (error) {
     console.error('middleware.edge-routing.error', {
@@ -119,6 +99,56 @@ export async function middleware(request: NextRequest) {
       'content-type': 'text/plain; charset=utf-8',
     },
   });
+}
+
+async function handleLocalHome(request: NextRequest): Promise<NextResponse> {
+  try {
+    const sandboxOrigin = await resolveSandboxOrigin();
+    if (!sandboxOrigin) {
+      return NextResponse.next();
+    }
+
+    const requestHeaders = new Headers(request.headers);
+    requestHeaders.set('x-sandbox-origin', sandboxOrigin);
+
+    const response = NextResponse.next({
+      request: { headers: requestHeaders },
+    });
+    response.headers.set('x-sandbox-origin', sandboxOrigin);
+    response.headers.set('x-sandbox-routing', 'local-view');
+    return response;
+  } catch (error) {
+    console.error('middleware.local-home.error', {
+      message: error instanceof Error ? error.message : 'unknown-error',
+      stack: error instanceof Error ? error.stack : undefined,
+    });
+    return NextResponse.next();
+  }
+}
+
+async function rewriteToSandbox(kind: 'active' | 'fallback', targetUrl: string, request: NextRequest): Promise<NextResponse> {
+  const rewriteUrl = composeSandboxUrl(targetUrl, request);
+  const debug = await probeSandbox(rewriteUrl, request);
+  const sandboxOrigin = extractOrigin(targetUrl);
+  const requestHeaders = new Headers(request.headers);
+  if (sandboxOrigin) {
+    requestHeaders.set('x-sandbox-origin', sandboxOrigin);
+  }
+  const response = NextResponse.rewrite(rewriteUrl, {
+    request: { headers: requestHeaders },
+  });
+  if (sandboxOrigin) {
+    response.headers.set('x-sandbox-origin', sandboxOrigin);
+  }
+  response.headers.set('x-sandbox-routing', kind === 'active' ? 'edge-rewrite' : 'edge-rewrite-stale');
+  if (debug) {
+    response.headers.set('x-sandbox-probe-status', String(debug.status));
+    if (debug.error) {
+      response.headers.set('x-sandbox-probe-error', debug.error);
+    }
+  }
+  logSandboxRouting(kind, request, rewriteUrl, debug);
+  return response;
 }
 
 function composeSandboxUrl(baseUrl: string, request: NextRequest): string {
@@ -188,4 +218,30 @@ function logSandboxRouting(kind: 'active' | 'fallback', request: NextRequest, re
   }
 
   console.log(JSON.stringify(payload));
+}
+
+async function resolveSandboxOrigin(): Promise<string | null> {
+  const activeUrl = await readEdgeConfigUrl([EDGE_CONFIG_KEYS.active, LEGACY_EDGE_CONFIG_KEYS.active]);
+  if (activeUrl) {
+    return extractOrigin(activeUrl);
+  }
+
+  const fallbackUrl = await readEdgeConfigUrl([EDGE_CONFIG_KEYS.lastKnownGood, LEGACY_EDGE_CONFIG_KEYS.lastKnownGood]);
+  if (fallbackUrl) {
+    return extractOrigin(fallbackUrl);
+  }
+
+  return null;
+}
+
+function extractOrigin(urlString: string): string | null {
+  try {
+    return new URL(urlString).origin;
+  } catch (error) {
+    console.warn('middleware.invalid-sandbox-url', {
+      urlString,
+      error: error instanceof Error ? error.message : String(error),
+    });
+    return null;
+  }
 }
