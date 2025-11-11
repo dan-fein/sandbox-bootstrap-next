@@ -11,6 +11,8 @@ type SandboxHealthPayload = {
   uptimeSeconds?: number;
   timestamp?: string;
   sandboxOrigin?: string | null;
+  watchdogLastCheckAt?: string | null;
+  watchdogLastRotationAt?: string | null;
 };
 
 type HeaderStore = Awaited<ReturnType<typeof headers>>;
@@ -56,7 +58,7 @@ async function SandboxInfo(): Promise<JSX.Element> {
   const status = telemetry?.status ?? 'unknown';
   const environment = telemetry?.env ?? (sandboxOrigin ? 'sandbox' : 'router');
   const uptime = formatDuration(telemetry?.uptimeSeconds);
-  const lastChecked = formatTimestamp(telemetry?.timestamp);
+  const lastChecked = formatTimestamp(telemetry?.watchdogLastCheckAt ?? telemetry?.timestamp);
   const hasTelemetry = Boolean(telemetry);
 
   return (
@@ -192,17 +194,14 @@ export function HomePageContent(): JSX.Element {
         <span className="eyebrow">Vercel Sandbox Router</span>
         <h1>Zero-downtime sandboxes, one entry point.</h1>
         <p>
-          Follow a single hostname for every preview environment. The router watches each sandbox,
-          swaps on failure, and keeps latency low wherever your team deploys.
-        </p>
-        <div className="cta-row">
+          Some might argue that this is a waste of resources. It might be.
+          </p>
+        {/* <div className="cta-row">
           <Link href="/api/health" className="button primary">
             Check health
           </Link>
-          <Link href="/internal/keepalive" prefetch={false} className="button">
-            Keepalive ping
-          </Link>
-        </div>
+          
+        </div> */}
       </section>
 
       <section className="info-grid">

@@ -261,3 +261,230 @@ Error: edge-config-update-failed: 403 {"error":{"code":"forbidden","message":"No
 [2025-11-11T02:05:59.287Z] INFO sandbox.decommission.success sandbox={"id":"sbx_FTEDPN11T43I5wd5WPKMvUlgubim","url":"https://sb-2svop7sejyoc.vercel.run","createdAt":"2025-11-11T01:40:41.933Z","status":"healthy","drainStartedAt":"2025-11-11T01:41:35.887Z"}
 [2025-11-11T02:05:59.469Z] INFO watchdog.tick.complete durationMs=34806
  GET /api/watchdog?force [32m200[39m in 35.0s[2m (compile: 92ms, proxy.ts: 48ms, render: 34.8s)[22m
+[2025-11-11T02:09:05.215Z] INFO watchdog.tick state={"draining":[{"id":"sbx_KQ1iQkWRcC3AThER3BN1BAJdQzDO","url":"https://sb-1s604rd856hi.vercel.run","createdAt":"2025-11-10T21:35:18.133Z","status":"healthy","drainStartedAt":"2025-11-11T01:40:42.364Z"},{"id":"sbx_FTEDPN11T43I5wd5WPKMvUlgubim","url":"https://sb-2svop7sejyoc.vercel.run","createdAt":"2025-11-11T01:40:41.933Z","status":"healthy","drainStartedAt":"2025-11-11T01:41:35.887Z"}],"active":{"id":"sbx_3j84Ho9GILmGcVbaA136MoX5Yoae","url":"https://sb-2apkgx29xd20.vercel.run","createdAt":"2025-11-11T01:41:35.487Z","status":"healthy"},"lastRotationAt":"2025-11-11T01:41:35.887Z","lastCheckAt":"2025-11-11T01:41:35.887Z","lastFailure":null} forceProvision=true
+[2025-11-11T02:09:05.215Z] INFO sandbox.provision.start reason=force-provision-request previous=sbx_3j84Ho9GILmGcVbaA136MoX5Yoae
+[2025-11-11T02:09:05.216Z] INFO sandbox.provision.create.start reason=force-provision-request
+[2025-11-11T02:09:05.782Z] INFO sandbox.bootstrap.env sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal repoUrl=https://github.com/dan-fein/sandbox-bootstrap-next.git gitRef=main workdir=/tmp/next-sandbox-app
+[2025-11-11T02:09:05.782Z] INFO sandbox.command.start sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=prepare-workdir cmd=rm args=["-rf","/tmp/next-sandbox-app"] cwd=undefined detached=false
+[2025-11-11T02:09:08.097Z] INFO sandbox.command.complete sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=prepare-workdir exitCode=0 signal=null
+[2025-11-11T02:09:08.098Z] INFO sandbox.command.start sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=create-workdir cmd=mkdir args=["-p","/tmp/next-sandbox-app"] cwd=undefined detached=false
+[2025-11-11T02:09:08.595Z] INFO sandbox.command.complete sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=create-workdir exitCode=0 signal=null
+[2025-11-11T02:09:08.601Z] INFO sandbox.command.start sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=git-clone cmd=git args=["clone","--branch","main","--single-branch","--depth","1","https://github.com/dan-fein/sandbox-bootstrap-next.git","/tmp/next-sandbox-app"] cwd=undefined detached=false
+[2025-11-11T02:09:08.995Z] INFO sandbox.command.complete sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=git-clone exitCode=0 signal=null
+[2025-11-11T02:09:08.996Z] INFO sandbox.command.start sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=corepack-enable cmd=corepack args=["enable"] cwd=undefined detached=false
+[2025-11-11T02:09:09.069Z] WARN sandbox.command.stderr sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=git-clone message="Cloning into '/tmp/next-sandbox-app'..."
+[2025-11-11T02:09:09.325Z] INFO sandbox.command.complete sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=corepack-enable exitCode=0 signal=null
+[2025-11-11T02:09:09.325Z] INFO sandbox.command.start sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install cmd=pnpm args=["install","--no-frozen-lockfile"] cwd=/tmp/next-sandbox-app detached=false
+[2025-11-11T02:09:09.778Z] WARN sandbox.command.stderr sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="! Corepack is about to download https://registry.npmjs.org/pnpm/-/pnpm-9.12.2.tgz"
+[2025-11-11T02:09:10.861Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="   ╭───────────────────────────────────────────────────────────────────╮"
+[2025-11-11T02:09:10.861Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="   │                                                                   │"
+[2025-11-11T02:09:10.862Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="   │                Update available! 9.12.2 → 10.21.0.                │"
+[2025-11-11T02:09:10.862Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="   │   Changelog: https://github.com/pnpm/pnpm/releases/tag/v10.21.0   │"
+[2025-11-11T02:09:10.862Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="   │         Run \"corepack install -g pnpm@10.21.0\" to update.         │"
+[2025-11-11T02:09:10.862Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="   │                                                                   │"
+[2025-11-11T02:09:10.862Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="   │         Follow @pnpmjs for updates: https://x.com/pnpmjs          │"
+[2025-11-11T02:09:10.863Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="   │                                                                   │"
+[2025-11-11T02:09:10.863Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="   ╰───────────────────────────────────────────────────────────────────╯"
+[2025-11-11T02:09:10.874Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="Progress: resolved 1, reused 0, downloaded 0, added 0"
+[2025-11-11T02:09:12.089Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="Progress: resolved 14, reused 0, downloaded 9, added 0"
+[2025-11-11T02:09:12.976Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="Progress: resolved 69, reused 0, downloaded 14, added 0"
+[2025-11-11T02:09:13.941Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="Progress: resolved 73, reused 0, downloaded 14, added 0"
+[2025-11-11T02:09:15.019Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="Progress: resolved 81, reused 0, downloaded 60, added 0"
+[2025-11-11T02:09:15.986Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="Progress: resolved 102, reused 0, downloaded 63, added 0"
+[2025-11-11T02:09:16.964Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="Progress: resolved 102, reused 0, downloaded 72, added 0"
+[2025-11-11T02:09:18.032Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="Progress: resolved 173, reused 0, downloaded 144, added 0"
+[2025-11-11T02:09:18.959Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="Progress: resolved 275, reused 0, downloaded 219, added 0"
+[2025-11-11T02:09:20.079Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="Packages: +362"
+[2025-11-11T02:09:20.080Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message=++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+[2025-11-11T02:09:20.081Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="Progress: resolved 410, reused 0, downloaded 362, added 0"
+[2025-11-11T02:09:20.962Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="Progress: resolved 410, reused 0, downloaded 367, added 280"
+[2025-11-11T02:09:21.922Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="Progress: resolved 410, reused 0, downloaded 367, added 362, done"
+[2025-11-11T02:09:21.948Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message=".../node_modules/unrs-resolver postinstall$ napi-postinstall unrs-resolver 1.11.1 check"
+[2025-11-11T02:09:21.949Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message=".../sharp@0.34.5/node_modules/sharp install$ node install/check.js || npm run build"
+[2025-11-11T02:09:22.037Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message=".../node_modules/unrs-resolver postinstall: Done"
+[2025-11-11T02:09:22.050Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message=".../sharp@0.34.5/node_modules/sharp install: Done"
+[2025-11-11T02:09:22.424Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message=dependencies:
+[2025-11-11T02:09:22.424Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="+ @opentelemetry/api 1.9.0"
+[2025-11-11T02:09:22.424Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="+ @vercel/edge-config 1.4.3"
+[2025-11-11T02:09:22.424Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="+ @vercel/sandbox 1.0.2"
+[2025-11-11T02:09:22.424Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="+ dotenv 16.6.1 (17.2.3 is available)"
+[2025-11-11T02:09:22.425Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="+ next 16.0.1"
+[2025-11-11T02:09:22.425Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="+ p-retry 6.2.1 (7.1.0 is available)"
+[2025-11-11T02:09:22.425Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="+ react 18.3.1 (19.2.0 is available)"
+[2025-11-11T02:09:22.425Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="+ react-dom 18.3.1 (19.2.0 is available)"
+[2025-11-11T02:09:22.426Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message=devDependencies:
+[2025-11-11T02:09:22.427Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="+ @types/node 22.19.0 (24.10.0 is available)"
+[2025-11-11T02:09:22.427Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="+ @types/react 18.3.26 (19.2.2 is available)"
+[2025-11-11T02:09:22.427Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="+ @types/react-dom 18.3.7 (19.2.2 is available)"
+[2025-11-11T02:09:22.427Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="+ eslint 9.39.1"
+[2025-11-11T02:09:22.427Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="+ eslint-config-next 16.0.0-canary.4 (16.0.1 is available)"
+[2025-11-11T02:09:22.427Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="+ typescript 5.9.3"
+[2025-11-11T02:09:22.428Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install message="Done in 12.1s"
+[2025-11-11T02:09:22.485Z] INFO sandbox.command.complete sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-install exitCode=0 signal=null
+[2025-11-11T02:09:22.486Z] INFO sandbox.command.start sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-build cmd=pnpm args=["--filter","next-app","build"] cwd=/tmp/next-sandbox-app detached=false
+[2025-11-11T02:09:23.360Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-build message="> next-app@0.1.0 build /tmp/next-sandbox-app"
+[2025-11-11T02:09:23.361Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-build message="> next build"
+[2025-11-11T02:09:23.939Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-build message="Attention: Next.js now collects completely anonymous telemetry regarding usage."
+[2025-11-11T02:09:23.939Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-build message="This information is used to shape Next.js' roadmap and prioritize features."
+[2025-11-11T02:09:23.940Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-build message="You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:"
+[2025-11-11T02:09:23.940Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-build message=https://nextjs.org/telemetry
+[2025-11-11T02:09:23.949Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-build message="   ▲ Next.js 16.0.1 (Turbopack)"
+[2025-11-11T02:09:23.950Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-build message="   - Experiments (use with caution):"
+[2025-11-11T02:09:23.950Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-build message="     ✓ externalDir"
+[2025-11-11T02:09:23.951Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-build message="     · serverActions"
+[2025-11-11T02:09:23.997Z] WARN sandbox.command.stderr sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-build message=" ⚠ The \"middleware\" file convention is deprecated. Please use \"proxy\" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy"
+[2025-11-11T02:09:24.003Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-build message="   Creating an optimized production build ..."
+[2025-11-11T02:09:33.804Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-build message=" ✓ Compiled successfully in 9.3s"
+[2025-11-11T02:09:33.805Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-build message="   Running TypeScript ..."
+[2025-11-11T02:09:36.662Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-build message="   Collecting page data ..."
+[2025-11-11T02:09:37.015Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-build message="[2025-11-11T02:09:37.095Z] INFO watchdog.env.skip name=EDGE_CONFIG_ID"
+[2025-11-11T02:09:37.016Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-build message="[2025-11-11T02:09:37.096Z] INFO watchdog.env.skip name=EDGE_CONFIG_TOKEN"
+[2025-11-11T02:09:37.016Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-build message="[2025-11-11T02:09:37.096Z] INFO watchdog.env.skip name=SANDBOX_APP_REPO"
+[2025-11-11T02:09:37.017Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-build message="[2025-11-11T02:09:37.096Z] INFO watchdog.env.skip name=KEEPALIVE_TOKEN"
+[2025-11-11T02:09:37.068Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-build message="   Generating static pages (0/3) ..."
+[2025-11-11T02:09:37.899Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-build message=" ✓ Generating static pages (3/3) in 698.6ms"
+[2025-11-11T02:09:37.904Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-build message="   Finalizing page optimization ..."
+[2025-11-11T02:09:37.916Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-build message="Route (app)"
+[2025-11-11T02:09:37.916Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-build message="┌ ƒ /"
+[2025-11-11T02:09:37.916Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-build message="├ ○ /_not-found"
+[2025-11-11T02:09:37.917Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-build message="├ ƒ /api/health"
+[2025-11-11T02:09:37.917Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-build message="├ ƒ /api/watchdog"
+[2025-11-11T02:09:37.918Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-build message="├ ƒ /internal/keepalive"
+[2025-11-11T02:09:37.918Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-build message="└ ƒ /local-home"
+[2025-11-11T02:09:37.918Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-build message="ƒ Proxy (Middleware)"
+[2025-11-11T02:09:37.918Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-build message="○  (Static)   prerendered as static content"
+[2025-11-11T02:09:37.918Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-build message="ƒ  (Dynamic)  server-rendered on demand"
+[2025-11-11T02:09:37.951Z] INFO sandbox.command.complete sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-build exitCode=0 signal=null
+[2025-11-11T02:09:37.952Z] INFO sandbox.command.start sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-start cmd=pnpm args=["--filter","next-app","start"] cwd=/tmp/next-sandbox-app detached=true
+[2025-11-11T02:09:38.286Z] INFO sandbox.command.detached sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-start commandId=cmd_02431206b60541bbb33b5248b9d1
+[2025-11-11T02:09:38.286Z] INFO sandbox.bootstrap.started sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal reason=force-provision-request
+[2025-11-11T02:09:38.286Z] INFO sandbox.provision.created id=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal url=https://sb-5u9b0yd6sv51.vercel.run createdAt=2025-11-11T02:09:38.286Z status=provisioning
+[2025-11-11T02:09:38.473Z] INFO sandbox.health.ok sandbox={"id":"sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal","url":"https://sb-5u9b0yd6sv51.vercel.run","createdAt":"2025-11-11T02:09:38.286Z","status":"provisioning"} role=candidate payload={}
+[2025-11-11T02:09:38.473Z] INFO sandbox.provision.ready id=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal url=https://sb-5u9b0yd6sv51.vercel.run createdAt=2025-11-11T02:09:38.286Z status=provisioning
+[2025-11-11T02:09:38.783Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-start message="> next-app@0.1.0 start /tmp/next-sandbox-app"
+[2025-11-11T02:09:38.783Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-start message="> next start"
+[2025-11-11T02:09:38.894Z] INFO sandbox.promote fresh={"id":"sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal","url":"https://sb-5u9b0yd6sv51.vercel.run","createdAt":"2025-11-11T02:09:38.286Z","status":"provisioning"} previous={"id":"sbx_3j84Ho9GILmGcVbaA136MoX5Yoae","url":"https://sb-2apkgx29xd20.vercel.run","createdAt":"2025-11-11T01:41:35.487Z","status":"healthy"}
+[2025-11-11T02:09:38.894Z] INFO sandbox.decommission.start sandbox={"id":"sbx_KQ1iQkWRcC3AThER3BN1BAJdQzDO","url":"https://sb-1s604rd856hi.vercel.run","createdAt":"2025-11-10T21:35:18.133Z","status":"healthy","drainStartedAt":"2025-11-11T01:40:42.364Z"} ageMs=1702851
+[2025-11-11T02:09:38.997Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-start message="   ▲ Next.js 16.0.1"
+[2025-11-11T02:09:38.998Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-start message="   - Local:        http://localhost:3000"
+[2025-11-11T02:09:38.998Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-start message="   - Network:      http://192.168.0.199:3000"
+[2025-11-11T02:09:38.998Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-start message=" ✓ Starting..."
+[2025-11-11T02:09:39.030Z] WARN sandbox.command.stderr sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-start message=" ⚠ \"next start\" does not work with \"output: standalone\" configuration. Use \"node .next/standalone/server.js\" instead."
+[2025-11-11T02:09:39.084Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-start message=" ✓ Ready in 208ms"
+[2025-11-11T02:09:39.204Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-start message="[2025-11-11T02:09:39.280Z] INFO watchdog.env.skip name=EDGE_CONFIG_ID"
+[2025-11-11T02:09:39.204Z] INFO sandbox.command.stdout sandboxId=sbx_SNlSnMGjnaU1nUJcSKXcI5Kr5jal step=pnpm-start message="[2025-11-11T02:09:39.283Z] INFO watchdog.env.skip name=EDGE_CONFIG_TOKEN"
+[2025-11-11T02:09:39.451Z] INFO sandbox.decommission.success sandbox={"id":"sbx_KQ1iQkWRcC3AThER3BN1BAJdQzDO","url":"https://sb-1s604rd856hi.vercel.run","createdAt":"2025-11-10T21:35:18.133Z","status":"healthy","drainStartedAt":"2025-11-11T01:40:42.364Z"}
+[2025-11-11T02:09:39.451Z] INFO sandbox.decommission.start sandbox={"id":"sbx_FTEDPN11T43I5wd5WPKMvUlgubim","url":"https://sb-2svop7sejyoc.vercel.run","createdAt":"2025-11-11T01:40:41.933Z","status":"healthy","drainStartedAt":"2025-11-11T01:41:35.887Z"} ageMs=1649328
+[2025-11-11T02:09:39.998Z] INFO sandbox.decommission.success sandbox={"id":"sbx_FTEDPN11T43I5wd5WPKMvUlgubim","url":"https://sb-2svop7sejyoc.vercel.run","createdAt":"2025-11-11T01:40:41.933Z","status":"healthy","drainStartedAt":"2025-11-11T01:41:35.887Z"}
+[2025-11-11T02:09:40.362Z] INFO watchdog.tick.complete durationMs=35150
+ GET /api/watchdog?force [32m200[39m in 35.2s[2m (compile: 6ms, proxy.ts: 14ms, render: 35.2s)[22m
+TypeError: terminated
+    at [3mignore-listed frames[23m {
+  [cause]: Error [SocketError]: other side closed
+      at [3mignore-listed frames[23m {
+    code: [32m'UND_ERR_SOCKET'[39m,
+    socket: {
+      localAddress: [32m'192.168.1.32'[39m,
+      localPort: [33m63744[39m,
+      remoteAddress: [32m'198.169.2.193'[39m,
+      remotePort: [33m443[39m,
+      remoteFamily: [32m'IPv4'[39m,
+      timeout: [90mundefined[39m,
+      bytesWritten: [33m3042[39m,
+      bytesRead: [33m7011[39m
+    }
+  }
+}
+ [31m[1m⨯[22m[39m unhandledRejection: TypeError: terminated
+    at [3mignore-listed frames[23m {
+  [cause]: Error [SocketError]: other side closed
+      at [3mignore-listed frames[23m {
+    code: [32m'UND_ERR_SOCKET'[39m,
+    socket: {
+      localAddress: [32m'192.168.1.32'[39m,
+      localPort: [33m63744[39m,
+      remoteAddress: [32m'198.169.2.193'[39m,
+      remotePort: [33m443[39m,
+      remoteFamily: [32m'IPv4'[39m,
+      timeout: [90mundefined[39m,
+      bytesWritten: [33m3042[39m,
+      bytesRead: [33m7011[39m
+    }
+  }
+}
+ [31m[1m⨯[22m[39m unhandledRejection:  TypeError: terminated
+    at [3mignore-listed frames[23m {
+  [cause]: Error [SocketError]: other side closed
+      at [3mignore-listed frames[23m {
+    code: [32m'UND_ERR_SOCKET'[39m,
+    socket: {
+      localAddress: [32m'192.168.1.32'[39m,
+      localPort: [33m63744[39m,
+      remoteAddress: [32m'198.169.2.193'[39m,
+      remotePort: [33m443[39m,
+      remoteFamily: [32m'IPv4'[39m,
+      timeout: [90mundefined[39m,
+      bytesWritten: [33m3042[39m,
+      bytesRead: [33m7011[39m
+    }
+  }
+}
+ GET /api/health [32m200[39m in 295ms[2m (compile: 285ms, proxy.ts: 7ms, render: 3ms)[22m
+ GET /local-home [32m200[39m in 2.1s[2m (compile: 1009ms, proxy.ts: 185ms, render: 890ms)[22m
+ GET /api/health [32m200[39m in 6ms[2m (compile: 2ms, proxy.ts: 2ms, render: 2ms)[22m
+ GET /local-home [32m200[39m in 500ms[2m (compile: 4ms, proxy.ts: 6ms, render: 489ms)[22m
+ GET /api/health [32m200[39m in 5ms[2m (compile: 1728µs, proxy.ts: 1628µs, render: 1962µs)[22m
+ GET /local-home [32m200[39m in 453ms[2m (compile: 3ms, proxy.ts: 5ms, render: 446ms)[22m
+TypeError: terminated
+    at [3mignore-listed frames[23m {
+  [cause]: Error [SocketError]: other side closed
+      at [3mignore-listed frames[23m {
+    code: [32m'UND_ERR_SOCKET'[39m,
+    socket: {
+      localAddress: [32m'192.168.1.32'[39m,
+      localPort: [33m63797[39m,
+      remoteAddress: [32m'198.169.2.193'[39m,
+      remotePort: [33m443[39m,
+      remoteFamily: [32m'IPv4'[39m,
+      timeout: [90mundefined[39m,
+      bytesWritten: [33m3104[39m,
+      bytesRead: [33m7101[39m
+    }
+  }
+}
+ [31m[1m⨯[22m[39m unhandledRejection: TypeError: terminated
+    at [3mignore-listed frames[23m {
+  [cause]: Error [SocketError]: other side closed
+      at [3mignore-listed frames[23m {
+    code: [32m'UND_ERR_SOCKET'[39m,
+    socket: {
+      localAddress: [32m'192.168.1.32'[39m,
+      localPort: [33m63797[39m,
+      remoteAddress: [32m'198.169.2.193'[39m,
+      remotePort: [33m443[39m,
+      remoteFamily: [32m'IPv4'[39m,
+      timeout: [90mundefined[39m,
+      bytesWritten: [33m3104[39m,
+      bytesRead: [33m7101[39m
+    }
+  }
+}
+ [31m[1m⨯[22m[39m unhandledRejection:  TypeError: terminated
+    at [3mignore-listed frames[23m {
+  [cause]: Error [SocketError]: other side closed
+      at [3mignore-listed frames[23m {
+    code: [32m'UND_ERR_SOCKET'[39m,
+    socket: {
+      localAddress: [32m'192.168.1.32'[39m,
+      localPort: [33m63797[39m,
+      remoteAddress: [32m'198.169.2.193'[39m,
+      remotePort: [33m443[39m,
+      remoteFamily: [32m'IPv4'[39m,
+      timeout: [90mundefined[39m,
+      bytesWritten: [33m3104[39m,
+      bytesRead: [33m7101[39m
+    }
+  }
+}
+ [32m[1m✓[22m[39m Compiled in 27ms
+ GET /local-home [32m200[39m in 696ms[2m (compile: 116ms, proxy.ts: 14ms, render: 566ms)[22m
