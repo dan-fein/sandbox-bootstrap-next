@@ -216,9 +216,8 @@ export function HomePageContent(): JSX.Element {
         <article className="info-card">
           <h2>How it works</h2>
           <ul className="feature-list">
-            <li>Edge functions observe each sandbox every few seconds.</li>
-            <li>Routing tables update instantly across all regions.</li>
-            <li>Fresh sandboxes cut over smoothly with no cold starts.</li>
+            <li>A scheduled watchdog checks sandbox health about every five minutes and provisions a fresh one when needed.</li>
+            <li>Middleware reads Edge Config to rewrite traffic to the current sandbox and tags requests with <code>x-sandbox-origin</code>.</li>
           </ul>
         </article>
       </section>
