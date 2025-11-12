@@ -1,22 +1,40 @@
 
-
 > next-app@0.1.0 build /Users/danfein/Code/sandbox-router/apps/next-app
 > next build
 
- [33m[1m⚠[22m[39m Warning: Next.js inferred your workspace root, but it may not be correct.
+ ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
  We detected multiple lockfiles and selected the directory of /Users/danfein/package-lock.json as the root directory.
  To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
    See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
  Detected additional lockfiles: 
-   * /Users/danfein/Code/sandbox-router/apps/next-app/pnpm-lock.yaml
    * /Users/danfein/Code/sandbox-router/pnpm-lock.yaml
 
-   [1m[38;2;173;127;168m▲ Next.js 16.0.1[39m[22m (Turbopack)
+   ▲ Next.js 16.0.1 (Turbopack)
    - Environments: .env.local
    - Experiments (use with caution):
-     [1m✓[22m externalDir
+     ✓ externalDir
      · serverActions
 
- [33m[1m⚠[22m[39m The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
- [37m[1m [22m[39m Creating an optimized production build ...
-[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 130.[39m
+ ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 3.0s
+   Running TypeScript ...
+   Collecting page data ...
+   Generating static pages (0/3) ...
+ ✓ Generating static pages (3/3) in 608.6ms
+   Finalizing page optimization ...
+
+Route (app)
+┌ ƒ /
+├ ○ /_not-found
+├ ƒ /api/health
+├ ƒ /api/watchdog
+├ ƒ /internal/keepalive
+└ ƒ /local-home
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

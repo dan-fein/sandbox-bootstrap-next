@@ -26,25 +26,8 @@ function LoadingSandboxInfo(): JSX.Element {
     <div className="live-panel pending">
       <span className="label">Active sandbox</span>
       <span className="value shimmer">Detecting…</span>
-      <dl className="telemetry">
-        <div>
-          <dt>Status</dt>
-          <dd className="shimmer">Loading…</dd>
-        </div>
-        <div>
-          <dt>Environment</dt>
-          <dd className="shimmer">Loading…</dd>
-        </div>
-        <div>
-          <dt>Uptime</dt>
-          <dd className="shimmer">Loading…</dd>
-        </div>
-        <div>
-          <dt>Last Check</dt>
-          <dd className="shimmer">Loading…</dd>
-        </div>
-      </dl>
-      <p>Streaming sandbox telemetry…</p>
+      <p className="shimmer">Preparing sandbox details…</p>
+      <p className="muted shimmer">Telemetry is warming up.</p>
     </div>
   );
 }
@@ -55,81 +38,23 @@ async function SandboxInfo(): Promise<JSX.Element> {
   const sandboxOrigin = requestHeaders.get(SANDBOX_HEADER);
   const telemetry = await readSandboxTelemetry(requestHeaders, sandboxOrigin);
 
-  const status = telemetry?.status ?? 'unknown';
-  const environment = telemetry?.env ?? (sandboxOrigin ? 'sandbox' : 'router');
-  const uptime = formatDuration(telemetry?.uptimeSeconds);
-  const lastChecked = formatTimestamp(telemetry?.watchdogLastCheckAt ?? telemetry?.timestamp);
   const hasTelemetry = Boolean(telemetry);
+  const activeSandbox = telemetry?.sandboxOrigin ?? sandboxOrigin ?? 'No sandbox detected';
+  const telemetryStatusMessage = hasTelemetry
+    ? 'Telemetry streaming from the active sandbox.'
+    : 'Telemetry is warming up. Check back in a moment.';
 
   return (
     <div className="live-panel">
       <span className="label">Active sandbox</span>
-      <span className="value">{sandboxOrigin ?? 'No sandbox detected'}</span>
-      <dl className="telemetry">
-        <div>
-          <dt>Status</dt>
-          <dd>{status}</dd>
-        </div>
-        {/* <div>
-          <dt>Environment</dt>
-          <dd>{environment}</dd>
-        </div> */}
-        <div>
-          <dt>Uptime</dt>
-          <dd>{uptime}</dd>
-        </div>
-        <div>
-          <dt>Last Check</dt>
-          <dd>{lastChecked}</dd>
-        </div>
-      </dl>
+      <span className="value">{activeSandbox}</span>
       <p>
         Requests are annotated with the <code>{SANDBOX_HEADER}</code> header so the router can steer
         traffic toward the healthiest sandbox.
       </p>
-      {!hasTelemetry ? <p className="muted">Telemetry is warming up. Check back in a moment.</p> : null}
+      <p className="muted">{telemetryStatusMessage}</p>
     </div>
   );
-}
-
-function formatDuration(totalSeconds?: number): string {
-  if (typeof totalSeconds !== 'number' || !Number.isFinite(totalSeconds) || totalSeconds < 0) {
-    return '—';
-  }
-
-  const seconds = Math.floor(totalSeconds);
-  const hours = Math.floor(seconds / 3600);
-  const minutes = Math.floor((seconds % 3600) / 60);
-  const remainingSeconds = seconds % 60;
-
-  const segments = [];
-  if (hours) {
-    segments.push(`${hours}h`);
-  }
-  if (minutes || hours) {
-    segments.push(`${minutes}m`);
-  }
-  segments.push(`${remainingSeconds}s`);
-
-  return segments.join(' ');
-}
-
-function formatTimestamp(timestamp?: string): string {
-  if (!timestamp) {
-    return '—';
-  }
-
-  const date = new Date(timestamp);
-  if (Number.isNaN(date.getTime())) {
-    return '—';
-  }
-
-  return new Intl.DateTimeFormat('en-US', {
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: false,
-  }).format(date);
 }
 
 async function readSandboxTelemetry(

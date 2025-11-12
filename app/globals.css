@@ -142,33 +142,6 @@ main.home {
   gap: 0.65rem;
 }
 
-.telemetry {
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 1rem 1.5rem;
-}
-
-.telemetry div {
-  display: grid;
-  gap: 0.3rem;
-}
-
-.telemetry dt {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  font-weight: 600;
-  color: #94a3b8;
-}
-
-.telemetry dd {
-  margin: 0;
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: #0f172a;
-}
-
 .live-panel .label {
   font-size: 0.85rem;
   text-transform: uppercase;
@@ -197,10 +170,6 @@ main.home {
 
 .pending .value {
   color: rgba(15, 23, 42, 0.3);
-}
-
-.pending .telemetry dd {
-  color: rgba(15, 23, 42, 0.25);
 }
 
 .shimmer {
