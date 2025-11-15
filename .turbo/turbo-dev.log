@@ -66,3 +66,4 @@
  GET /api/health [32m200[39m in 8ms[2m (compile: 1784µs, proxy.ts: 2ms, render: 4ms)[22m
  GET /local-home [32m200[39m in 782ms[2m (compile: 22ms, proxy.ts: 65ms, render: 695ms)[22m
  [32m[1m✓[22m[39m Compiled in 345ms
+[?25h

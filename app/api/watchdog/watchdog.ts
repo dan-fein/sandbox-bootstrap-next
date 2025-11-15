@@ -19,6 +19,7 @@ const SANDBOX_START_PORT = process.env.SANDBOX_PORT ?? '3000';
 const SANDBOX_WORKDIR = process.env.SANDBOX_WORKDIR ?? '/tmp/next-sandbox-app';
 const SANDBOX_START_PORT_NUMBER = parsePort(SANDBOX_START_PORT);
 const SANDBOX_CREDENTIALS = getSandboxCredentials();
+const RUNNING_SANDBOX_STATUSES = new Set<RemoteSandboxStatus>(['pending', 'running', 'stopping']);
 const EDGE_CONFIG_KEYS = {
   active: 'sandbox_active_url',
   lastKnownGood: 'sandbox_last_known_good_url',
@@ -67,6 +68,15 @@ type SandboxHealth =
   | { healthy: true; payload: Record<string, unknown> }
   | { healthy: false; reason: string };
 
+type RemoteSandboxStatus = 'pending' | 'running' | 'stopping' | 'stopped' | 'failed';
+
+type RemoteSandboxSummary = {
+  id: string;
+  status: RemoteSandboxStatus;
+  region: string;
+  createdAt: number;
+};
+
 const DEFAULT_STATE: SandboxState = {
   draining: [],
 };
@@ -86,6 +96,22 @@ export default async function handler(options: WatchdogOptions = {}) {
   }
 
   const { forceProvision = false } = options;
+
+  if (!forceProvision) {
+    const runningSandboxes = await listRunningSandboxes();
+    if (runningSandboxes.length > 0) {
+      log('watchdog.skip.active-sandboxes', {
+        sandboxes: runningSandboxes.map(sandbox => ({
+          id: sandbox.id,
+          status: sandbox.status,
+          region: sandbox.region,
+          createdAt: sandbox.createdAt,
+        })),
+      });
+      return new Response('sandbox already running', { status: 200 });
+    }
+  }
+
   const startedAt = Date.now();
   const state = await loadState();
 
@@ -566,6 +592,34 @@ function describeError(error: unknown): string {
 
 function cloneState<T>(value: T): T {
   return JSON.parse(JSON.stringify(value));
+}
+
+async function listRunningSandboxes(): Promise<RemoteSandboxSummary[]> {
+  if (!SANDBOX_CREDENTIALS) {
+    log('sandbox.list.skip', { reason: 'missing-credentials' }, 'warn');
+    return [];
+  }
+
+  try {
+    const { json } = await Sandbox.list({
+      projectId: SANDBOX_CREDENTIALS.projectId,
+      teamId: SANDBOX_CREDENTIALS.teamId,
+      token: SANDBOX_CREDENTIALS.token,
+      limit: 20,
+    });
+
+    return json.sandboxes
+      .filter(sandbox => RUNNING_SANDBOX_STATUSES.has(sandbox.status))
+      .map(sandbox => ({
+        id: sandbox.id,
+        status: sandbox.status,
+        region: sandbox.region,
+        createdAt: sandbox.createdAt,
+      }));
+  } catch (error) {
+    log('sandbox.list.error', { error: describeError(error) }, 'warn');
+    return [];
+  }
 }
 
 type LogPayload =
